@@ -6,7 +6,7 @@ import './Movies.css';
 function Movies(props) {
 
     return (
-        <div className="Movies">
+        <div className="row">
             {props.movies.length > 0 ? props.movies.map((movie, index) => (
                 <Movie
                     key={index}

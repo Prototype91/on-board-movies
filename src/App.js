@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Movies from './components/Movies/Movies';
+import Search from './components/Search/Search';
 import './App.css';
 
 function App() {
@@ -21,7 +22,11 @@ function App() {
   console.log('MOVIES', movies);
 
   return (
-    <div className="App">
+    <div className="ctn">
+      <header>
+        <Search />
+        <h1>Ma Bibliothèque : </h1>
+      </header>
       <main>
         <Movies movies={movies} />
       </main>

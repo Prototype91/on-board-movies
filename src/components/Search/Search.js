@@ -4,8 +4,19 @@ import './Search.css';
 
 function Search() {
     return (
-        <div className="Search">
-            <p>Search</p>
+        
+        <div className="container">
+            <h1>Filtrer par :</h1>
+            <form>
+                <div className="row">
+                    <div className="col-25">
+                        <label>Titre :</label>
+                    </div>
+                    <div className="col-75">
+                        <input type="text" placeholder="Titre"></input>
+                    </div>
+                </div>
+            </form>
         </div>
     );
 }

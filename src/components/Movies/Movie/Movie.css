@@ -1,0 +1,44 @@
+.column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+}
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin-bottom: 10px;
+}
+
+img {
+    width: 50%;
+}
+
+.delete-btn {
+    background-color: red;
+}
+
+.edit-btn {
+    background-color: green;
+    margin-right: 20px;
+}
+
+.edit-btn, .delete-btn {
+    list-style-type: none;
+    outline: 0;
+    cursor: pointer;
+    padding: 5px;
+    color: white;
+    border-radius: 50px;
+    border: none;
+}
