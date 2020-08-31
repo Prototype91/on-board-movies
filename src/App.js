@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { Route, Link } from "react-router-dom";
+import Axios from 'axios';
 import Movies from './components/Movies/Movies';
-import Search from './components/Search/Search';
+import AddMovies from './components/AddMovie/AddMovie';
 import './App.css';
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/movies')
+    Axios.get('http://localhost:3000/movies')
       .then(movies => {
         console.log(movies.data);
         setMovies(movies.data);
@@ -19,16 +20,16 @@ function App() {
       })
   }, []);
 
-  console.log('MOVIES', movies);
-
   return (
     <div className="ctn">
-      <header>
-        <Search />
-        <h1>Ma Bibliothèque : </h1>
-      </header>
       <main>
-        <Movies movies={movies} />
+        <Route exact path='/'>
+          <Movies movies={movies} />
+          <Link to='/addMovies'>Ajouter un Film</Link>
+        </Route>
+        <Route exact path='/addMovies'>
+          <AddMovies />
+        </Route>
       </main>
     </div>
   );
