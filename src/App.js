@@ -9,8 +9,10 @@ function App() {
 
   const [movies, setMovies] = useState([]);
 
+  const REQUEST_URL = 'http://localhost:3000/movies'
+
   useEffect(() => {
-    Axios.get('http://localhost:3000/movies')
+    Axios.get(REQUEST_URL)
       .then(movies => {
         console.log("Mes Films : ", movies.data);
         let myMovies = movies.data;

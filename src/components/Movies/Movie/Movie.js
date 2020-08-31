@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Route } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import './Movie.css';
-import Details from '../../Details/Details';
 
 function Movie(props) {
     return (
@@ -14,11 +13,9 @@ function Movie(props) {
                     <p>{props.description}</p>
                     <input type="submit" value="Modifier" className="edit-btn"></input>
                     <input type="submit" value="Supprimer" className="delete-btn"></input>
+                    <input onClick={() => props.viewMovieInfo(props.id)} type="submit" value="Voir détails" className="delete-btn"></input>
                 </div>
             </div>
-            <Route exact path='/details'>
-                <Details title={props.title} />
-            </Route>
         </div>
     );
 }

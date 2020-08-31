@@ -9,6 +9,7 @@ function SearchResult(props) {
                     <img src={props.poster} />
                     <h1>{props.title}</h1>
                     <h2>{props.release_date}</h2>
+                    <input type="submit" value="Ajouter" className="edit-btn" onClick={() => props.viewMovieInfo(props.id)}></input>
                 </div>
             </div>
         </div>

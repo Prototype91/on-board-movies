@@ -10,6 +10,14 @@
         display: block;
         margin-bottom: 20px;
     }
+
+    .SearchResult img {
+        width: 15%!important;
+    }
+
+    .SearchResult .card {
+        height: 200px!important;
+    }
 }
 
 .SearchResult .card {
@@ -19,7 +27,7 @@
     background-color: #f1f1f1;
     margin-bottom: 10px;
     margin-top: 20px;
-    height: 500px;
+    height: 400px;
 }
 
 .SearchResult img {
