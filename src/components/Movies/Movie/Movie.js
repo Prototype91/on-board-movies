@@ -1,21 +1,11 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import { Route } from "react-router-dom";
 import './Movie.css';
 import Details from '../../Details/Details';
 
 function Movie(props) {
-
-    // const movieDetails = () => {
-    //     let history = useHistory();
-    //     function handleClick() {
-    //         history.push('/details');
-    //     }
-    // }
-
-
     return (
-        <div>
+        <div className="Movie">
             <div className="column" >
                 <div className="card">
                     <img src={props.poster} />

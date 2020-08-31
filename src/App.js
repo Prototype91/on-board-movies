@@ -12,8 +12,9 @@ function App() {
   useEffect(() => {
     Axios.get('http://localhost:3000/movies')
       .then(movies => {
-        console.log(movies.data);
-        setMovies(movies.data);
+        console.log("Mes Films : ", movies.data);
+        let myMovies = movies.data;
+        setMovies(myMovies);
       })
       .catch(error => {
         console.log(error);
@@ -25,7 +26,7 @@ function App() {
       <main>
         <Route exact path='/'>
           <Movies movies={movies} />
-          <Link to='/addMovies'>Ajouter un Film</Link>
+          <Link className="addMovieLink" to='/addMovies'>Ajouter un Film</Link>
         </Route>
         <Route exact path='/addMovies'>
           <AddMovies />

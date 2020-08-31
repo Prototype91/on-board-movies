@@ -1,9 +1,55 @@
-.container h1 {
+.AddMovies h1 {
     text-align: center;
 }
 
-.date {
+.AddMovies .date {
     font-size: 1.2rem;
     display: block;
     padding: 0.5rem 1rem;
+}
+
+.AddMovies input[type=text],
+.AddMovies select,
+.AddMovies textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+}
+
+.AddMovies label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+.AddMovies {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+.AddMovies .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.AddMovies .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+.AddMovies .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media screen and (max-width: 600px) {
+    .AddMovies .col-25,
+    .AddMovies .col-75 {
+        width: 100%;
+        margin-top: 0;
+    }
 }

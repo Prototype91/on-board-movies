@@ -1,40 +1,41 @@
-.Movie .column {
+.SearchResult .column {
     float: left;
     width: 25%;
     padding: 0 10px;
 }
 
 @media screen and (max-width: 600px) {
-    .Movie .column {
+    .SearchResult .column {
         width: 100%;
         display: block;
         margin-bottom: 20px;
     }
 }
 
-.Movie .card {
+.SearchResult .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
     background-color: #f1f1f1;
     margin-bottom: 10px;
     margin-top: 20px;
+    height: 500px;
 }
 
-.Movie img {
+.SearchResult img {
     width: 50%;
 }
 
-.Movie .delete-btn {
+.SearchResult .delete-btn {
     background-color: red;
 }
 
-.Movie .edit-btn {
+.SearchResult .edit-btn {
     background-color: green;
     margin-right: 20px;
 }
 
-.Movie .edit-btn, .Movie .delete-btn {
+.SearchResult .edit-btn, .SearchResult .delete-btn {
     list-style-type: none;
     outline: 0;
     cursor: pointer;

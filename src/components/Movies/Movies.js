@@ -1,14 +1,14 @@
 import React from 'react';
 import Movie from './Movie/Movie';
-import Search from '../Search/Search';
+import Filter from '../Filter/Filter';
 import './Movies.css';
 
 function Movies(props) {
 
     return (
-        <div>
+        <div className="Movies">
             <header>
-                <Search />
+                <Filter />
             </header>
             <div className="row">
                 <h1 className="title-movies">Ma Bibliothèque : </h1>

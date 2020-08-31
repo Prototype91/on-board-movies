@@ -1,10 +1,9 @@
 import React from 'react';
-import axios from 'axios';
-import './Search.css';
+import './Filter.css';
 
-function Search() {
+function Filter() {
     return (
-        <div className="container">
+        <div className="Filter">
             <h1>Filtrer par :</h1>
             <form>
                 <div className="row">
@@ -32,4 +31,4 @@ function Search() {
     );
 }
 
-export default Search;
+export default Filter;
