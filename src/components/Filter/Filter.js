@@ -1,7 +1,7 @@
 import React from 'react';
 import './Filter.css';
 
-function Filter() {
+const Filter = () => {
     return (
         <section className="Filter">
             <h1>Filtrer par :</h1>

@@ -7,7 +7,7 @@ import Filter from './components/Filter/Filter';
 import './App.css';
 import Info from './components/Movies/Infos/Infos';
 
-function App() {
+const App = () => {
 
   const [movies, setMovies] = useState([]);
 

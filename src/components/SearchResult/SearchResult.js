@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchResult.css';
 
-function SearchResult(props) {
+const SearchResult = (props) => {
     return (
         <div className="SearchResult">
             <div className="column" >

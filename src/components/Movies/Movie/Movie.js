@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Route, Link } from "react-router-dom";
 import './Movie.css';
 
-function Movie(props) {
+const Movie = (props) => {
     return (
         <article className="Movie">
             <section className="column" >

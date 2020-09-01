@@ -7,9 +7,9 @@ import { useHistory } from "react-router";
 import SearchBar from './SearchBar/SearchBar';
 import { Route, Link } from "react-router-dom";
 
-function AddMovie() {
+const AddMovie = () => {
 
-    const BASE_URL = 'https://api.themoviedb.org/3/search/movie?'
+    const BASE_URL = 'https://api.themoviedb.org/3/search/movie?';
     const API_KEY = '4d196b83a81a1379fde8fb79e2df0116';
 
     const [searchedResults, setSearchedResults] = useState([]);
@@ -41,6 +41,7 @@ function AddMovie() {
         const filteredMovie = searchedResults.filter(movie => movie.id === id);
 
         setCurrentMovie(filteredMovie);
+
         setStepTwo(true);
 
         console.log(filteredMovie);

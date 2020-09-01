@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom'
 import './Info.css';
 
-function Info(props) {
+const Info = (props) => {
 
     let id = useParams();
     console.log('INFO MOVIES', props.movies)

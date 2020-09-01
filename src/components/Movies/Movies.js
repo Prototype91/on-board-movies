@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 import Infos from './Infos/Infos';
 import './Movies.css';
 
-function Movies(props) {
+const Movies = (props) => {
 
     const [currentMovie, setCurrentMovie] = useState(null);
 
@@ -29,7 +29,7 @@ function Movies(props) {
         <article className="Movies">
             <section className="row">
                 <h1 className="title-movies">Ma Bibliothèque : </h1>
-                {props.movies.length > 0 && currentMovie ===null ? props.movies.map((movie, index) => (
+                {props.movies.length > 0 && currentMovie === null ? props.movies.map((movie, index) => (
                     <Movie
                         id={movie.id}
                         key={index}
@@ -40,7 +40,7 @@ function Movies(props) {
                         viewMovieInfo={viewMovieInfo}
                     />
                 )) : <p>Aucun film dans votre bibliotèque</p>}
-                {currentMovie ? <Infos title={currentMovie[0].title} /> : ''}
+                {currentMovie && <Infos title={currentMovie[0].title} />}
             </section>
         </article>
     );

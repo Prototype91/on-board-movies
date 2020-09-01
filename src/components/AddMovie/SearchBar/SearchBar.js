@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchBar.css';
 
-function SearchBar(props) {
+const SearchBar = (props) => {
     return (
         <div>
             <h1>Rechercher un film pour l'ajouter à votre Bibliothèque !</h1>
