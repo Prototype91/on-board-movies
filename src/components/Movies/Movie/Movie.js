@@ -4,19 +4,15 @@ import './Movie.css';
 
 const Movie = (props) => {
     return (
-        <article className="Movie">
-            <section className="column" >
-                <div className="card">
-                    {props.poster === null ? <img src={defaultImage} alt="Poster" /> : <img src={props.poster} alt="Poster" />}
-                    <h1>{props.title}</h1>
-                    <h2>{props.release_date}</h2>
-                    <p>{props.description}</p>
-                    <input type="submit" value="Modifier" className="edit-btn"></input>
-                    <input type="submit" value="Supprimer" className="delete-btn"></input>
-                    <input onClick={() => props.viewMovieInfo(props.id)} type="submit" value="Voir détails" className="delete-btn"></input>
-                </div>
-            </section>
-        </article>
+        <div className="Movie">
+            {props.poster === null ? <img src={defaultImage} alt="Poster" /> : <img src={props.poster} alt="Poster" />}
+            <h1>{props.title}</h1>
+            <h2>{props.release_date}</h2>
+            <p>{props.description}</p>
+            <input type="submit" value="Modifier" className="edit-btn"></input>
+            <input type="submit" value="Supprimer" className="delete-btn"></input>
+            <input onClick={() => props.viewMovieInfo(props.id)} type="submit" value="Voir détails" className="delete-btn"></input>
+        </div>
     );
 }
 

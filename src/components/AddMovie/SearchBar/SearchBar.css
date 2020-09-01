@@ -1,0 +1,32 @@
+.SearchBar form {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap
+}
+
+.SearchBar form>input {
+    -webkit-box-flex: 1;
+    flex: 1 1 10ch;
+    margin: .5rem
+}
+
+.SearchBar form>input[type="email"] {
+    -webkit-box-flex: 3;
+    flex: 3 1 30ch;
+}
+
+.SearchBar input {
+    border: none;
+    background: hsl(0, 0%, 93%);
+    border-radius: .25rem;
+    padding: .75rem 1rem
+}
+
+.SearchBar input[type="submit"] {
+    background: hotpink;
+    color: white;
+}
+
+.SearchBar h1 {
+    text-align: center;
+}

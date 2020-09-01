@@ -1,54 +1,15 @@
-.SearchResult .column {
-    float: left;
-    width: 25%;
-    padding: 0 10px;
-}
-
-@media screen and (max-width: 600px) {
-    .SearchResult .column {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-    }
-
-    .SearchResult img {
-        width: 15%!important;
-    }
-
-    .SearchResult .card {
-        height: 200px!important;
-    }
-}
-
-.SearchResult .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
+.SearchResult {
+    border: solid 1px grey;
     text-align: center;
-    background-color: #f1f1f1;
-    margin-bottom: 10px;
+    width: 30%;
+    height: 440px;
+    min-width: 220px;
+    margin: auto;
     margin-top: 20px;
-    height: 400px;
+    padding: 10px;
+    border-radius: 30px;
 }
 
 .SearchResult img {
-    width: 50%;
-}
-
-.SearchResult .delete-btn {
-    background-color: red;
-}
-
-.SearchResult .edit-btn {
-    background-color: green;
-    margin-right: 20px;
-}
-
-.SearchResult .edit-btn, .SearchResult .delete-btn {
-    list-style-type: none;
-    outline: 0;
-    cursor: pointer;
-    padding: 5px;
-    color: white;
-    border-radius: 50px;
-    border: none;
+    max-width: 390px;
 }

@@ -6,7 +6,7 @@ const stepTwoAddMovie = (props) => {
     console.log('FINAL CURRENT MOVIE', movie);
 
     return (
-        <div>
+        <div className='StepTwoAddMovie'>
             <h1>Modifiez les informations avant l'ajout :</h1>
             <form>
                 <label htmlFor="title">Titre</label>
@@ -30,7 +30,7 @@ const stepTwoAddMovie = (props) => {
                 <label htmlFor="overview">Description</label>
                 <textarea cols="50" type="text" name="overview" defaultValue={movie.overview} placeholder="Description" required />
 
-                <input type="submit" className="submit"></input>
+                <input type="submit" className="submit" value='Ajouter'></input>
             </form>
         </div>
     );

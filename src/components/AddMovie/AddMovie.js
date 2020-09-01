@@ -40,20 +40,20 @@ const AddMovie = () => {
     }
 
     const buildFinalCurrentMovie = (currentMovie) => {
-        const BASE_URL_SIMILAR = 'https://api.themoviedb.org/3/movie';
-        const REQUEST_URL_SIMILAR = `${BASE_URL_SIMILAR}/${currentMovie.id}/similar?api_key=${API_KEY}`;
-        const REQUEST_URL_ACTORS = `${BASE_URL_SIMILAR}/${currentMovie.id}/credits?api_key=${API_KEY}`;
+        const NEW_BASE_URL = 'https://api.themoviedb.org/3/movie';
+        const REQUEST_URL_SIMILAR = `${NEW_BASE_URL}/${currentMovie.id}/similar?api_key=${API_KEY}`;
+        const REQUEST_URL_ACTORS = `${NEW_BASE_URL}/${currentMovie.id}/credits?api_key=${API_KEY}`;
 
         const ACTORS_REQUEST = Axios.get(REQUEST_URL_ACTORS);
         const SIMILAR_REQUEST = Axios.get(REQUEST_URL_SIMILAR);
 
         Axios.all([ACTORS_REQUEST, SIMILAR_REQUEST])
-            .then(Axios.spread((...res) => {
-                const actorRequest = res[0];
-                const similarRequest = res[1];
-                console.log('ACTOR_REQUEST', actorRequest, "SIMILAR_REQUEST", similarRequest);
-                const actorsArray = actorRequest.data.cast.slice(0, 3);
-                const similarArray = similarRequest.data.results.slice(0, 3);
+            .then(Axios.spread((...response) => {
+                const actorsResponse = response[0];
+                const similarMoviesResponse = response[1];
+                console.log('ACTOR_RESPONSE', actorsResponse, "SIMILAR_RESPONSE", similarMoviesResponse);
+                const actorsArray = actorsResponse.data.cast.slice(0, 3);
+                const similarArray = similarMoviesResponse.data.results.slice(0, 3);
                 setCurrentMovie({ ...currentMovie, actors: actorsArray, similar: similarArray });
             }))
             .catch(error => {
@@ -76,11 +76,11 @@ const AddMovie = () => {
 
     return (
         <div className="AddMovies">
-            <div className="results">
-                {!stepTwo && <SearchBar
+            {!stepTwo && <SearchBar
                     startSearch={startSearch}
                     changeHandler={changeHandler}
                 />}
+            <div className="results">
                 {searchedResults.length > 0 && !stepTwo && searchedResults.map((movie, index) => (
                     <SearchResult
                         id={movie.id}

@@ -37,7 +37,7 @@ const App = () => {
           <AddMovies />
         </Route>
         <Route exact path='/infos/:id'>
-          <Info movies={movies}/>
+          <Info movies={movies} />
         </Route>
       </main>
     </Router>

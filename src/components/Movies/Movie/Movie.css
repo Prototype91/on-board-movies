@@ -1,45 +1,15 @@
-.Movie .column {
-    float: left;
-    width: 25%;
-    padding: 0 10px;
-}
-
-@media screen and (max-width: 600px) {
-    .Movie .column {
-        width: 100%;
-        display: block;
-        margin-bottom: 20px;
-    }
-}
-
-.Movie .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    padding: 16px;
+.Movie {
+    border: solid 1px grey;
     text-align: center;
-    background-color: #f1f1f1;
-    margin-bottom: 10px;
+    width: 30%;
+    height: 440px;
+    min-width: 220px;
+    margin: auto;
     margin-top: 20px;
+    padding: 10px;
+    border-radius: 30px;
 }
 
 .Movie img {
-    width: 50%;
-}
-
-.Movie .delete-btn {
-    background-color: red;
-}
-
-.Movie .edit-btn {
-    background-color: green;
-    margin-right: 20px;
-}
-
-.Movie .edit-btn, .Movie .delete-btn {
-    list-style-type: none;
-    outline: 0;
-    cursor: pointer;
-    padding: 5px;
-    color: white;
-    border-radius: 50px;
-    border: none;
+    max-width: 390px;
 }

@@ -1,46 +1,32 @@
-.Filter input[type=text],
-.Filter select,
-.Filter textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
+.Filter form {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap
 }
 
-.Filter label {
-    padding: 12px 12px 12px 0;
-    display: inline-block;
+.Filter form>input {
+    -webkit-box-flex: 1;
+    flex: 1 1 10ch;
+    margin: .5rem
 }
 
-.Filter {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+.Filter form>input[type="email"] {
+    -webkit-box-flex: 3;
+    flex: 3 1 30ch;
 }
 
-.Filter .col-25 {
-    float: left;
-    width: 25%;
-    margin-top: 6px;
+.Filter input {
+    border: none;
+    background: hsl(0, 0%, 93%);
+    border-radius: .25rem;
+    padding: .75rem 1rem
 }
 
-.Filter .col-75 {
-    float: left;
-    width: 75%;
-    margin-top: 6px;
+.Filter input[type="submit"] {
+    background: hotpink;
+    color: white;
 }
 
-.Filter .row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-@media screen and (max-width: 600px) {
-    .Filter .col-25,
-    .Filter .col-75 {
-        width: 100%;
-        margin-top: 0;
-    }
+.Filter h1 {
+    text-align: center;
 }
