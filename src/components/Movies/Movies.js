@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Movie from './Movie/Movie';
 import Filter from '../Filter/Filter';
 import { Route, Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import Infos from './Infos/Infos';
 import './Movies.css';
 
@@ -9,23 +10,24 @@ function Movies(props) {
 
     const [currentMovie, setCurrentMovie] = useState(null);
 
-    const viewMovieInfo = (id) => {
-        console.log('ID : ', id)
-        const filteredMovie = props.movies.filter(movie => movie.id === id);
+    const history = useHistory();
 
-        // const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null;
+    const viewMovieInfo = (id) => {
+
+        console.log('ID : ', id)
+
+        const filteredMovie = props.movies.filter(movie => movie.id === id);
 
         setCurrentMovie(filteredMovie);
 
         console.log(filteredMovie);
+
+        history.push(`/infos/${id}`);
     }
 
     return (
-        <div className="Movies">
-            <header>
-                <Filter />
-            </header>
-            <div className="row">
+        <article className="Movies">
+            <section className="row">
                 <h1 className="title-movies">Ma Bibliothèque : </h1>
                 {props.movies.length > 0 && currentMovie ===null ? props.movies.map((movie, index) => (
                     <Movie
@@ -37,10 +39,10 @@ function Movies(props) {
                         poster={movie.poster}
                         viewMovieInfo={viewMovieInfo}
                     />
-                )) : ''}
+                )) : <p>Aucun film dans votre bibliotèque</p>}
                 {currentMovie ? <Infos title={currentMovie[0].title} /> : ''}
-            </div>
-        </div>
+            </section>
+        </article>
     );
 }
 

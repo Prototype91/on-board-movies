@@ -4,8 +4,8 @@ import './Movie.css';
 
 function Movie(props) {
     return (
-        <div className="Movie">
-            <div className="column" >
+        <article className="Movie">
+            <section className="column" >
                 <div className="card">
                     <img src={props.poster} />
                     <h1>{props.title}</h1>
@@ -15,8 +15,8 @@ function Movie(props) {
                     <input type="submit" value="Supprimer" className="delete-btn"></input>
                     <input onClick={() => props.viewMovieInfo(props.id)} type="submit" value="Voir détails" className="delete-btn"></input>
                 </div>
-            </div>
-        </div>
+            </section>
+        </article>
     );
 }
 

@@ -3,7 +3,7 @@ import './Filter.css';
 
 function Filter() {
     return (
-        <div className="Filter">
+        <section className="Filter">
             <h1>Filtrer par :</h1>
             <form>
                 <div className="row">
@@ -16,18 +16,25 @@ function Filter() {
                 </div>
                 <div className="row">
                     <div className="col-25">
-                        <label htmlFor="category">Catégorie :</label>
+                        <label>Catégorie :</label>
                     </div>
                     <div className="col-75">
-                        <select id="category" name="category">
-                            <option value="action">Action</option>
-                            <option value="fiction">Fiction</option>
-                            <option value="thriller">Thriller</option>
-                        </select>
+                        <input type="text" placeholder="Catégorie :"></input>
                     </div>
                 </div>
+                <div className="row">
+                    <div className="col-25">
+                        <label>Date de sortie :</label>
+                    </div>
+                    <div className="col-75">
+                        <input className='date' type="date" name='date' />
+                    </div>
+                </div>
+                <div className="row">
+                    <input type="submit" value="Submit" />
+                </div>
             </form>
-        </div>
+        </section>
     );
 }
 
