@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 import SearchResult from '../SearchResult/SearchResult';
-import './AddMovie.css';
-import StepTwoAddMovie from './stepTwoAddMovie/StepTwoAddMovie'
-import { useHistory } from "react-router";
+import StepTwoAddMovie from './StepTwoAddMovie/StepTwoAddMovie'
 import SearchBar from './SearchBar/SearchBar';
-import { Route, Link } from "react-router-dom";
+import './AddMovie.css';
 
 const AddMovie = () => {
 
@@ -17,8 +15,6 @@ const AddMovie = () => {
     const [dateParam, setDateParam] = useState('');
     const [currentMovie, setCurrentMovie] = useState(null);
     const [stepTwo, setStepTwo] = useState(false);
-
-    const history = useHistory();
 
     const startSearch = (e) => {
         e.preventDefault();
@@ -35,16 +31,34 @@ const AddMovie = () => {
             })
     }
 
-    const addMovie = (id) => {
-        console.log('ID : ', id);
-
+    const getCurrentMovie = (id) => {
         const filteredMovie = searchedResults.filter(movie => movie.id === id);
-
         setCurrentMovie(filteredMovie);
-
         setStepTwo(true);
+        buildFinalCurrentMovie(filteredMovie[0]);
+        console.log('CURRENT MOVIE', filteredMovie);
+    }
 
-        console.log(filteredMovie);
+    const buildFinalCurrentMovie = (currentMovie) => {
+        const BASE_URL_SIMILAR = 'https://api.themoviedb.org/3/movie';
+        const REQUEST_URL_SIMILAR = `${BASE_URL_SIMILAR}/${currentMovie.id}/similar?api_key=${API_KEY}`;
+        const REQUEST_URL_ACTORS = `${BASE_URL_SIMILAR}/${currentMovie.id}/credits?api_key=${API_KEY}`;
+
+        const ACTORS_REQUEST = Axios.get(REQUEST_URL_ACTORS);
+        const SIMILAR_REQUEST = Axios.get(REQUEST_URL_SIMILAR);
+
+        Axios.all([ACTORS_REQUEST, SIMILAR_REQUEST])
+            .then(Axios.spread((...res) => {
+                const actorRequest = res[0];
+                const similarRequest = res[1];
+                console.log('ACTOR_REQUEST', actorRequest, "SIMILAR_REQUEST", similarRequest);
+                const actorsArray = actorRequest.data.cast.slice(0, 3);
+                const similarArray = similarRequest.data.results.slice(0, 3);
+                setCurrentMovie({ ...currentMovie, actors: actorsArray, similar: similarArray });
+            }))
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     const changeHandler = (e) => {
@@ -55,6 +69,8 @@ const AddMovie = () => {
             case 'date':
                 setDateParam(e.target.value);
                 break;
+            default:
+                console.log(`Sorry, we are out of ${e.target.name}.`);
         }
     }
 
@@ -68,7 +84,7 @@ const AddMovie = () => {
                 {searchedResults.length > 0 && !stepTwo && searchedResults.map((movie, index) => (
                     <SearchResult
                         id={movie.id}
-                        addMovie={addMovie}
+                        getCurrentMovie={getCurrentMovie}
                         key={index}
                         title={movie.title}
                         release_date={movie.release_date}

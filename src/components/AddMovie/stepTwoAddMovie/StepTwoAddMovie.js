@@ -1,27 +1,9 @@
-import React, { useState } from 'react';
-import { Route, Link } from "react-router-dom";
+import React from 'react';
 import './StepTwoAddMovie.css';
-import Axios from 'axios';
 
 const stepTwoAddMovie = (props) => {
-    let movie = props.movie[0];
-    let similarMovies;
-    console.log('STEP TWO TITLE', movie);
-
-    const BASE_URL = 'https://api.themoviedb.org/3/movie';
-    const API_KEY = '4d196b83a81a1379fde8fb79e2df0116';
-    const REQUEST_URL = `${BASE_URL}/${movie.id}/similar?api_key=${API_KEY}`;
-
-    Axios.get(REQUEST_URL)
-        .then(movies => {
-            similarMovies = movies.data.results;
-            console.log("Mes Films Similaires : ", similarMovies);
-        })
-        .catch(error => {
-            console.log(error);
-        });
-
-    // actors + similar + categries
+    let movie = props.movie;
+    console.log('FINAL CURRENT MOVIE', movie);
 
     return (
         <div>
@@ -40,7 +22,7 @@ const stepTwoAddMovie = (props) => {
                 <input type="text" name="category" defaultValue={movie.category} placeholder="Catégorie" required />
 
                 <label htmlFor="similar">Titres similaires</label>
-                <input type="text" name="similar" defaultValue={movie.similar} placeholder="Titres Similaires" required />
+                <input type="text" name="similar" defaultValue={movie.similar_movies} placeholder="Titres Similaires" required />
 
                 <label htmlFor="actors">Acteurs</label>
                 <input type="text" name="actors" defaultValue={movie.actors} placeholder="Acteurs" required />

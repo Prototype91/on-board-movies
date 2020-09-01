@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Route, Link } from "react-router-dom";
+import React from 'react';
+import defaultImage from '../../../assets/no-image.png';
 import './Movie.css';
 
 const Movie = (props) => {
@@ -7,7 +7,7 @@ const Movie = (props) => {
         <article className="Movie">
             <section className="column" >
                 <div className="card">
-                    <img src={props.poster} />
+                    {props.poster === null ? <img src={defaultImage} alt="Poster" /> : <img src={props.poster} alt="Poster" />}
                     <h1>{props.title}</h1>
                     <h2>{props.release_date}</h2>
                     <p>{props.description}</p>

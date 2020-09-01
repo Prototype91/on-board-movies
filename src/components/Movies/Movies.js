@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Movie from './Movie/Movie';
-import Filter from '../Filter/Filter';
-import { Route, Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import Infos from './Infos/Infos';
 import './Movies.css';

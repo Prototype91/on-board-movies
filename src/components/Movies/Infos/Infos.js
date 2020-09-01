@@ -6,7 +6,7 @@ const Info = (props) => {
 
     let id = useParams();
     console.log('INFO MOVIES', props.movies)
-    let filteredMovie = props.movies.filter(movie => movie.id == id.id);
+    let filteredMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id));
     let movie = filteredMovie[0];
 
     return (
