@@ -1,23 +1,22 @@
-.Movie {
-    border: solid 1px grey;
-    text-align: center;
-    width: 20%;
-    min-width: 220px;
-    margin: auto;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 30px;
-}
-
-.Movie img {
-    max-width: 100px;
-}
-
 .Movie input {
     background-color: #BE72A4;
     color: white;
-    padding: 10px;
+    padding: 5px;
     border: none;
     border-radius: .25rem;
-    margin-right: 10px;
+}
+
+.Movie p {
+    font-size: 15px;
+    color: white
+}
+
+.Movie .wrapper {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+}
+
+.Movie .delete-btn {
+    margin-left: 10px;
 }

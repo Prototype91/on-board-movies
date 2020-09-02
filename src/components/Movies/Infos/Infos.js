@@ -32,24 +32,26 @@ const Info = (props) => {
                         <input type="submit" value="Supprimer" className="delete-btn"></input>
                     </section>}
             </div>
-            <div class="wrapper">
+            <div className="wrapper">
                 <h2>Films Similaires :</h2>
-                <div class="cards">
-                    {similarMovies && similarMovies.map(similarMovie => (
-                        <figure class="card">
+                <div className="cards">
+                    {similarMovies && similarMovies.map((similarMovie, index) => (
+                        <figure key={index + similarMovie.title} className="card">
                             <img src={similarMovie.poster} />
                             <figcaption>{similarMovie.title}</figcaption>
                         </figure>
                     ))}
                 </div>
             </div>
-            <div class="wrapper">
+            <div className="wrapper">
                 <h2>Acteurs du film :</h2>
-                <div class="cards">
-                    {actorsArray && actorsArray.map(actor => (
-                        <figure class="card">
+                <div className="cards">
+                    {actorsArray && actorsArray.map((actor, index) => (
+                        <figure key={index + actor.name} className="card">
                             <img src={actor.photo} />
-                            <figcaption>{actor.name}</figcaption>
+                            <figcaption>
+                                {actor.name + ' : ' + actor.character}
+                            </figcaption>
                         </figure>
                     ))}
                 </div>

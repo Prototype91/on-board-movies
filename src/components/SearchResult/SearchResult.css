@@ -1,23 +1,11 @@
-.SearchResult {
-    border: solid 1px grey;
-    text-align: center;
-    width: 30%;
-    height: 440px;
-    min-width: 220px;
-    margin: auto;
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 30px;
-}
-
-.SearchResult img {
-    max-width: 390px;
-}
-
 .SearchResult .add-btn {
     background-color: #BE72A4;
     color: white;
     padding: 10px;
     border: none;
     border-radius: .25rem;
+}
+
+.SearchResult .wrapper {
+    text-align: center;
 }

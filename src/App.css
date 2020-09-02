@@ -30,13 +30,149 @@ label, p, a {
     color: #ccc
 }
 
+main {
+    width: 80%;
+    margin: auto;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
 .addMovieLink {
     text-align: center;
     display: block;
     color: white;
 }
 
-main {
-    width: 80%;
-    margin: auto;
+/* CARDS MOVIES */
+
+.wrapper .cards .card figcaption,
+.wrapper .cards .card:after {
+    position: absolute;
+}
+
+.wrapper h2,
+.wrapper h2 strong,
+.wrapper .cards .card {
+    position: relative;
+}
+
+
+.wrapper .cards {
+    display: flex;
+}
+
+.wrapper h2,
+.wrapper h2 strong,
+.wrapper h2 span {
+    vertical-align: middle;
+}
+
+.wrapper {
+    padding: 15px;
+}
+
+.wrapper h2 {
+    padding: 10px;
+    padding-left: 25px;
+    color: #ccc;
+    margin: 0;
+}
+
+.wrapper h2 strong {
+    z-index: 2;
+    background: #24282f;
+    padding: 4px 8px;
+}
+
+.wrapper h2 span {
+    font-size: 0.7em;
+    color: #aaa;
+    margin-left: 10px;
+}
+
+.wrapper h2:after {
+    content: '';
+    z-index: 1;
+    bottom: 50%;
+    margin-bottom: -2px;
+    height: 2px;
+    left: 0;
+    right: 0;
+    background: #373d47;
+}
+
+.wrapper .cards {
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.wrapper .cards .card {
+    margin: 20px;
+    width: 180px;
+    height: 270px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.8);
+    transform-origin: center top;
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    transition: 0.3s;
+}
+
+.wrapper .cards .card img {
+    width: 100%;
+    min-height: 100%;
+}
+
+.wrapper .cards .card figcaption {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    background: none;
+    color: #fff;
+    transform: translateY(100%);
+    transition: 0.3s;
+}
+
+.wrapper .cards .card:after {
+    content: '';
+    z-index: 10;
+    width: 200%;
+    height: 100%;
+    top: -90%;
+    left: -20px;
+    opacity: 0.1;
+    transform: rotate(45deg);
+    background: linear-gradient(to top, transparent, #fff 15%, rgba(255, 255, 255, 0.5));
+    transition: 0.3s;
+}
+
+.wrapper .cards .card:hover,
+.wrapper .cards .card:focus,
+.wrapper .cards .card:active {
+    box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
+    transform: translateY(-3px) scale(1.05) rotateX(15deg);
+    cursor: pointer;
+}
+
+.wrapper .cards .card:hover figcaption,
+.wrapper .cards .card:focus figcaption,
+.wrapper .cards .card:active figcaption {
+    transform: none;
+}
+
+.wrapper .cards .card:hover:after,
+.wrapper .cards .card:focus:after,
+.wrapper .cards .card:active:after {
+    transform: rotate(25deg);
+    top: -40%;
+    opacity: 0.15;
+}
+
+.wrapper h2 {
+    text-align: center;
 }
