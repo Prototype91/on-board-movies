@@ -43,18 +43,22 @@ const AddMovie = () => {
         const NEW_BASE_URL = 'https://api.themoviedb.org/3/movie';
         const REQUEST_URL_SIMILAR = `${NEW_BASE_URL}/${currentMovie.id}/similar?api_key=${API_KEY}`;
         const REQUEST_URL_ACTORS = `${NEW_BASE_URL}/${currentMovie.id}/credits?api_key=${API_KEY}`;
+        const REQUEST_URL_CATEGORIES = `${NEW_BASE_URL}/${currentMovie.id}?api_key=${API_KEY}`;
 
         const ACTORS_REQUEST = Axios.get(REQUEST_URL_ACTORS);
         const SIMILAR_REQUEST = Axios.get(REQUEST_URL_SIMILAR);
+        const CATEGORIES_REQUEST = Axios.get(REQUEST_URL_CATEGORIES);
 
-        Axios.all([ACTORS_REQUEST, SIMILAR_REQUEST])
+        Axios.all([ACTORS_REQUEST, SIMILAR_REQUEST, CATEGORIES_REQUEST])
             .then(Axios.spread((...response) => {
                 const actorsResponse = response[0];
                 const similarMoviesResponse = response[1];
-                console.log('ACTOR_RESPONSE', actorsResponse, "SIMILAR_RESPONSE", similarMoviesResponse);
-                const actorsArray = actorsResponse.data.cast.slice(0, 3);
-                const similarArray = similarMoviesResponse.data.results.slice(0, 3);
-                setCurrentMovie({ ...currentMovie, actors: actorsArray, similar: similarArray });
+                const categoriesResponse = response[2];
+                console.log('ACTOR_RESPONSE', actorsResponse, "SIMILAR_RESPONSE", similarMoviesResponse, "CATEGORIES_RESPONSE", categoriesResponse);
+                const actorsArray = actorsResponse.data.cast.slice(0, 3).map(actor => actor.name);
+                const similarArray = similarMoviesResponse.data.results.slice(0, 3).map(similar => similar.title);
+                const categoriesArray = categoriesResponse.data.genres.map(category => category.name);
+                setCurrentMovie({ ...currentMovie, actors: actorsArray, similar: similarArray, categories: categoriesArray });
             }))
             .catch(error => {
                 console.log(error);
@@ -74,12 +78,23 @@ const AddMovie = () => {
         }
     }
 
+    const pushToFavorites = (e, movie) => {
+        e.preventDefault();
+        console.log("Pushed", movie);
+        // Axios.post('http://localhost:3000/movies', JSON.stringify(movie))
+        //     .then((response) => {
+        //         console.log(response);
+        //     }, (error) => {
+        //         console.log(error);
+        //     });
+    }
+
     return (
         <div className="AddMovies">
             {!stepTwo && <SearchBar
-                    startSearch={startSearch}
-                    changeHandler={changeHandler}
-                />}
+                startSearch={startSearch}
+                changeHandler={changeHandler}
+            />}
             <div className="results">
                 {searchedResults.length > 0 && !stepTwo && searchedResults.map((movie, index) => (
                     <SearchResult
@@ -91,7 +106,7 @@ const AddMovie = () => {
                         poster={`http://image.tmdb.org/t/p/w185${movie.poster_path}`}
                     />
                 ))}
-                {currentMovie !== null && stepTwo && <StepTwoAddMovie movie={currentMovie} />}
+                {currentMovie !== null && stepTwo && <StepTwoAddMovie movie={currentMovie} pushToFavorites={pushToFavorites} />}
             </div>
         </div>
     );

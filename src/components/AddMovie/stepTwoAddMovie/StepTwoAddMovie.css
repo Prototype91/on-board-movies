@@ -1,32 +1,32 @@
 .StepTwoAddMovie form {
-    display: -webkit-box;
     display: flex;
-    flex-wrap: wrap
+    flex-direction: column;
 }
 
 .StepTwoAddMovie form>input {
-    -webkit-box-flex: 1;
-    flex: 1 1 10ch;
-    margin: .5rem
+    padding: 10px;
 }
 
-.StepTwoAddMovie form>input[type="email"] {
-    -webkit-box-flex: 3;
-    flex: 3 1 30ch;
-}
-
-.StepTwoAddMovie input {
+.StepTwoAddMovie input, .StepTwoAddMovie textarea {
     border: none;
     background: hsl(0, 0%, 93%);
     border-radius: .25rem;
-    padding: .75rem 1rem
+    margin-bottom: 20px;
+}
+
+.StepTwoAddMovie textarea {
+    height: 100px;
 }
 
 .StepTwoAddMovie input[type="submit"] {
-    background: hotpink;
+    background-color: hotpink;
     color: white;
 }
 
 .StepTwoAddMovie h1 {
     text-align: center;
+}
+
+.StepTwoAddMovie label {
+    margin-bottom: 10px;
 }

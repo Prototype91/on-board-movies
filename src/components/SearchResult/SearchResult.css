@@ -13,3 +13,11 @@
 .SearchResult img {
     max-width: 390px;
 }
+
+.SearchResult input {
+    background-color: #BE72A4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: .25rem;
+}

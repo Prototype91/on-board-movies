@@ -29,6 +29,7 @@ const App = () => {
     <Router>
       <main>
         <Route exact path='/'>
+          <h1>Bienvenue sur On-Board Movies</h1>
           <Filter />
           <Movies movies={movies} />
           <Link className="addMovieLink" to='/addMovies'>Ajouter un Film</Link>

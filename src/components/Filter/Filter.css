@@ -1,7 +1,8 @@
 .Filter form {
     display: -webkit-box;
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .Filter form>input {
