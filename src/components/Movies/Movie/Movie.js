@@ -9,7 +9,7 @@ const Movie = (props) => {
                 <img src={defaultImage} alt="Poster" /> :
                 <img src={props.poster} alt="Poster" />
             }
-            <h1>{props.title}</h1>
+            <h2>{props.title}</h2>
             <h2>{props.release_date}</h2>
             <p>{props.description.substring(0, 100)}...</p>
             <input type="submit" value="Modifier" className="edit-btn"></input>

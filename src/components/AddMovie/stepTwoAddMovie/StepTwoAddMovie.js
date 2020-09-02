@@ -3,6 +3,7 @@ import './StepTwoAddMovie.css';
 
 const stepTwoAddMovie = (props) => {
     let movie = props.movie;
+    console.log('poster', movie.poster_path)
     console.log('MOVIE TO SEND', movie);
 
     return (

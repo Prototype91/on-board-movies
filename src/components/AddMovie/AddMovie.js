@@ -3,6 +3,7 @@ import Axios from 'axios';
 import SearchResult from '../SearchResult/SearchResult';
 import StepTwoAddMovie from './StepTwoAddMovie/StepTwoAddMovie'
 import SearchBar from './SearchBar/SearchBar';
+import searchImg from '../../assets/original.png';
 import './AddMovie.css';
 
 const AddMovie = () => {
@@ -16,6 +17,11 @@ const AddMovie = () => {
     const [currentMovie, setCurrentMovie] = useState(null);
     const [stepTwo, setStepTwo] = useState(false);
 
+    const [formValues, setFormValues] = useState({
+        title: '',
+        release_date: ''
+    })
+
     const startSearch = (e) => {
         e.preventDefault();
         Axios.get(`${BASE_URL}api_key=${API_KEY}&query=${titleParam}&primary_release_year=${dateParam}`)
@@ -26,6 +32,10 @@ const AddMovie = () => {
             .catch(error => {
                 console.log(error);
             })
+    }
+
+    const updateFormValues = () => {
+        console.log('Value Updated');
     }
 
     const getCurrentMovie = (id) => {
@@ -79,12 +89,6 @@ const AddMovie = () => {
     const pushToFavorites = (e, movie) => {
         e.preventDefault();
         console.log("Pushed", JSON.stringify(movie));
-        // Axios.post('http://localhost:3000/movies', JSON.stringify(movie))
-        //     .then((response) => {
-        //         console.log(response);
-        //     }, (error) => {
-        //         console.log(error);
-        //     });
 
         Axios({
             method: "post",
