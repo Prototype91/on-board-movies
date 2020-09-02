@@ -8,6 +8,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #24282f;
     margin: 0;
+    width: 100%;
 }
 
 header {
@@ -33,4 +34,9 @@ label, p, a {
     text-align: center;
     display: block;
     color: white;
+}
+
+main {
+    width: 80%;
+    margin: auto;
 }

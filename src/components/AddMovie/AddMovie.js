@@ -18,13 +18,10 @@ const AddMovie = () => {
 
     const startSearch = (e) => {
         e.preventDefault();
-        console.log('Start Search', titleParam, dateParam);
         Axios.get(`${BASE_URL}api_key=${API_KEY}&query=${titleParam}&primary_release_year=${dateParam}`)
             .then(movies => {
-                console.log("Résultats recherche : ", movies.data.results);
                 let results = movies.data.results;
                 setSearchedResults(results);
-                console.log('RESULTATS : ', results);
             })
             .catch(error => {
                 console.log(error);
@@ -35,8 +32,7 @@ const AddMovie = () => {
         const filteredMovie = searchedResults.filter(movie => movie.id === id);
         setCurrentMovie(filteredMovie);
         setStepTwo(true);
-        buildFinalCurrentMovie(filteredMovie[0]);
-        console.log('CURRENT MOVIE', filteredMovie);
+        buildFinalCurrentMovie(filteredMovie[0], filteredMovie[0]);
     }
 
     const buildFinalCurrentMovie = (currentMovie) => {
@@ -51,14 +47,16 @@ const AddMovie = () => {
 
         Axios.all([ACTORS_REQUEST, SIMILAR_REQUEST, CATEGORIES_REQUEST])
             .then(Axios.spread((...response) => {
+
                 const actorsResponse = response[0];
                 const similarMoviesResponse = response[1];
                 const categoriesResponse = response[2];
-                console.log('ACTOR_RESPONSE', actorsResponse, "SIMILAR_RESPONSE", similarMoviesResponse, "CATEGORIES_RESPONSE", categoriesResponse);
-                const actorsArray = actorsResponse.data.cast.slice(0, 3).map(actor => actor.name);
-                const similarArray = similarMoviesResponse.data.results.slice(0, 3).map(similar => similar.title);
+
+                const actorsArray = actorsResponse.data.cast.slice(0, 3);
+                const similarArray = similarMoviesResponse.data.results.slice(0, 3);
                 const categoriesArray = categoriesResponse.data.genres.map(category => category.name);
-                setCurrentMovie({ ...currentMovie, actors: actorsArray, similar: similarArray, categories: categoriesArray });
+
+                setCurrentMovie({ ...currentMovie, actors: actorsArray, similar_movies: similarArray, categories: categoriesArray });
             }))
             .catch(error => {
                 console.log(error);
@@ -80,13 +78,24 @@ const AddMovie = () => {
 
     const pushToFavorites = (e, movie) => {
         e.preventDefault();
-        console.log("Pushed", movie);
+        console.log("Pushed", JSON.stringify(movie));
         // Axios.post('http://localhost:3000/movies', JSON.stringify(movie))
         //     .then((response) => {
         //         console.log(response);
         //     }, (error) => {
         //         console.log(error);
         //     });
+
+        Axios({
+            method: "post",
+            url: 'http://localhost:3000/movies',
+            data: movie
+        })
+            .then((response) => {
+                console.log(response);
+            }, (error) => {
+                console.log(error);
+            });
     }
 
     return (
@@ -106,7 +115,11 @@ const AddMovie = () => {
                         poster={`http://image.tmdb.org/t/p/w185${movie.poster_path}`}
                     />
                 ))}
-                {currentMovie !== null && stepTwo && <StepTwoAddMovie movie={currentMovie} pushToFavorites={pushToFavorites} />}
+                {currentMovie !== null && stepTwo &&
+                    <StepTwoAddMovie
+                        movie={currentMovie}
+                        pushToFavorites={pushToFavorites}
+                    />}
             </div>
         </div>
     );

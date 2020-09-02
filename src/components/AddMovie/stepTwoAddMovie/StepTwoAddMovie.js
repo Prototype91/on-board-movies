@@ -3,7 +3,7 @@ import './StepTwoAddMovie.css';
 
 const stepTwoAddMovie = (props) => {
     let movie = props.movie;
-    console.log('FINAL CURRENT MOVIE', movie);
+    console.log('MOVIE TO SEND', movie);
 
     return (
         <div className='StepTwoAddMovie'>
@@ -18,14 +18,32 @@ const stepTwoAddMovie = (props) => {
                 <label htmlFor="langue">Langue d'origine :</label>
                 <input type="text" name="langue" defaultValue={movie.original_language} placeholder="Langue" required />
 
-                <label htmlFor="category">Catégorie :</label>
-                <input type="text" name="category" defaultValue={movie.categories} placeholder="Catégorie" required />
+                {movie.categories !== undefined &&
+                    movie.categories.map((category, index) => (
+                        < >
+                            <label key={"categoryLabel" + index} htmlFor="similar">Catégorie {index + 1} :</label>
+                            <input key={"categoryInput" + index} type="text" name="category" defaultValue={category} placeholder="" required />
+                        </>
+                    ))
+                }
 
-                <label htmlFor="similar">Titres similaires :</label>
-                <input type="text" name="similar" defaultValue={movie.similar} placeholder="Titres Similaires" required />
+                {movie.similar_movies !== undefined &&
+                    movie.similar_movies.map((movie, index) => (
+                        < >
+                            <label key={"movieLabel" + index} htmlFor="similar">Titres similaires {index + 1} :</label>
+                            <input key={"movieInput" + index} type="text" name="similar" defaultValue={movie.title} placeholder="" required />
+                        </>
+                    ))
+                }
 
-                <label htmlFor="actors">Acteurs :</label>
-                <input type="text" name="actors" defaultValue={movie.actors} placeholder="Acteurs" required />
+                {movie.actors !== undefined &&
+                    movie.actors.map((actor, index) => (
+                        < >
+                            <label key={"actorLabel" + index} htmlFor="actor">Acteur {index + 1} :</label>
+                            <input key={"actorInput" + index} type="text" name="actor" defaultValue={actor.name} placeholder="" required />
+                        </>
+                    ))
+                }
 
                 <label htmlFor="overview">Description :</label>
                 <textarea cols="50" type="text" name="overview" defaultValue={movie.overview} placeholder="Description" required />

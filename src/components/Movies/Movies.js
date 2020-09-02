@@ -11,15 +11,10 @@ const Movies = (props) => {
     const history = useHistory();
 
     const viewMovieInfo = (id) => {
-
-        console.log('ID : ', id)
-
+        console.log('ID : ', id);
         const filteredMovie = props.movies.filter(movie => movie.id === id);
-
         setCurrentMovie(filteredMovie);
-
         console.log(filteredMovie);
-
         history.push(`/infos/${id}`);
     }
 

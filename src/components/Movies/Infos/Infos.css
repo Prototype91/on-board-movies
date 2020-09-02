@@ -1,0 +1,26 @@
+.Infos h1, .Infos h2, .Infos p {
+    text-align: center;
+}
+
+.Infos {
+    text-align: center;
+    margin: auto;
+}
+
+.Infos img {
+    width: 20%;
+}
+
+.Infos input {
+    background-color: #BE72A4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: .25rem;
+    margin-right: 10px;
+}
+
+.Infos .ctn {
+    width: 80%;
+    margin: auto;
+}
