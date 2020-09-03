@@ -21,20 +21,6 @@ const Movie = (props) => {
                 <input type="submit" value="Modifier" className="edit-btn"></input>
                 <input type="submit" value="Supprimer" className="delete-btn"></input>
             </div>
-            <div className="wrapper">
-                <div className="cards">
-                    <figure className="card" onClick={() => props.viewMovieInfo(props.id)}>
-                        <img src={props.poster} />
-                        <figcaption>
-                            <p>{props.title}</p>
-                        </figcaption>
-                    </figure>
-                </div>
-                <p>Sortie : {props.release_date}</p>
-                <p>Synopsis : {props.description.substring(0, 200)}...</p>
-                <input type="submit" value="Modifier" className="edit-btn"></input>
-                <input type="submit" value="Supprimer" className="delete-btn"></input>
-            </div>
         </div>
     );
 }

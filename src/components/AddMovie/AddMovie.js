@@ -3,18 +3,20 @@ import Axios from 'axios';
 import SearchResult from '../SearchResult/SearchResult';
 import StepTwoAddMovie from './StepTwoAddMovie/StepTwoAddMovie'
 import SearchBar from './SearchBar/SearchBar';
+import { useHistory } from "react-router";
 import './AddMovie.css';
 
 const AddMovie = () => {
-
     const BASE_URL = 'https://api.themoviedb.org/3/search/movie?';
     const API_KEY = '4d196b83a81a1379fde8fb79e2df0116';
 
     const [searchedResults, setSearchedResults] = useState([]);
     const [titleParam, setTitleParam] = useState('');
     const [dateParam, setDateParam] = useState('');
-    const [currentMovie, setCurrentMovie] = useState(null);
     const [stepTwo, setStepTwo] = useState(false);
+    const [movieToSend, setMovieToSend] = useState(null);
+
+    const history = useHistory();
 
     const [formData, setFormData] = useState({
         title: '',
@@ -40,9 +42,8 @@ const AddMovie = () => {
 
     const getCurrentMovie = (id) => {
         const filteredMovie = searchedResults.filter(movie => movie.id === id);
-        setCurrentMovie(filteredMovie);
         setStepTwo(true);
-        buildFinalCurrentMovie(filteredMovie[0], filteredMovie[0]);
+        buildFinalCurrentMovie(filteredMovie[0]);
     }
 
     const buildFinalCurrentMovie = (currentMovie) => {
@@ -62,19 +63,48 @@ const AddMovie = () => {
                 const similarMoviesResponse = response[1];
                 const categoriesResponse = response[2];
 
-                const actorsArray = actorsResponse.data.cast.slice(0, 3);
-                const similarArray = similarMoviesResponse.data.results.slice(0, 3);
+                let actorsArray = actorsResponse.data.cast.slice(0, 3);
+                let similarArray = similarMoviesResponse.data.results.slice(0, 3);
+
+                let actors = [];
+                actorsArray.map(actor => {
+                    actors.push({
+                        name: actor.name,
+                        photo: `http://image.tmdb.org/t/p/w185${actor.profile_path}`,
+                        character: actor.character
+                    })
+                });
+
+                let similarMovies = [];
+                similarArray.map(similarMovie => {
+                    similarMovies.push({
+                        title: similarMovie.title,
+                        poster: `http://image.tmdb.org/t/p/w185${similarMovie.poster_path}`,
+                        release_date: similarMovie.release_date
+                    })
+                })
+
+
                 const categoriesArray = categoriesResponse.data.genres.map(category => category.name);
 
-                setCurrentMovie({ ...currentMovie, actors: actorsArray, similar_movies: similarArray, categories: categoriesArray });
+                setMovieToSend({
+                    title: currentMovie.title,
+                    release_date: currentMovie.release_date,
+                    categories: categoriesArray,
+                    description: currentMovie.overview,
+                    poster: `http://image.tmdb.org/t/p/w185${currentMovie.poster_path}`,
+                    backdrop: `http://image.tmdb.org/t/p/w185${currentMovie.backdrop_path}`,
+                    actors: actors,
+                    similar_movies: similarMovies,
+                });
             }))
             .catch(error => {
                 console.log(error);
-            })
+            });
     }
 
     const onUpdateFormData = (e, index) => {
-        console.log('OnUpdate', e, index);
+        console.log('OnUpdateFormData', e, index);
     }
 
     const changeHandler = (e) => {
@@ -94,14 +124,12 @@ const AddMovie = () => {
         e.preventDefault();
         console.log("Pushed", JSON.stringify(movie));
 
-        Axios({
-            method: "post",
-            url: 'http://localhost:3000/movies',
-            data: movie
-        })
-            .then((response) => {
+        Axios.post('http://localhost:3000/movies', movie)
+            .then(response => {
                 console.log(response);
-            }, (error) => {
+                history.goBack();
+            })
+            .catch(error => {
                 console.log(error);
             });
     }
@@ -124,9 +152,9 @@ const AddMovie = () => {
                     />
                 ))}
             </div>
-            {currentMovie !== null && stepTwo &&
+            {movieToSend !== null && stepTwo &&
                 <StepTwoAddMovie
-                    movie={currentMovie}
+                    movie={movieToSend}
                     pushToFavorites={pushToFavorites}
                     onUpdateFormData={onUpdateFormData}
                 />}

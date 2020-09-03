@@ -29,16 +29,6 @@ const stepTwoAddMovie = (props) => {
                     onChange={(e) => props.onUpdateFormData(e)}
                 />
 
-                <label htmlFor="original_language">Langue d'origine :</label>
-                <input
-                    type="text"
-                    name="original_language"
-                    defaultValue={movie.original_language}
-                    placeholder="Langue"
-                    required
-                    onChange={(e) => props.onUpdateFormData(e)}
-                />
-
                 {movie.categories !== undefined &&
                     movie.categories.map((category, index) => (
                         < >
@@ -91,7 +81,7 @@ const stepTwoAddMovie = (props) => {
                     cols="50"
                     type="text"
                     name="overview"
-                    defaultValue={movie.overview}
+                    defaultValue={movie.description}
                     placeholder="Description"
                     required
                     onChange={(e) => props.onUpdateFormData(e)}
