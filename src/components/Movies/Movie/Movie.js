@@ -1,5 +1,6 @@
 import React from 'react';
 import defaultImage from '../../../assets/no-image.png';
+import { Link } from 'react-router-dom';
 import './Movie.css';
 
 const Movie = (props) => {
@@ -18,12 +19,7 @@ const Movie = (props) => {
                 </div>
                 <p>Sortie : {props.release_date}</p>
                 <p>Synopsis : {props.description.substring(0, 200)}...</p>
-                <input
-                    type="submit"
-                    value="Modifier"
-                    className="edit-btn"
-                    onClick={() => props.editMovie(props.id)}
-                />
+                <Link to={`/movie/edit/${props.id}`} className="edit-btn">Modifier</Link>
                 <input
                     type="submit"
                     value="Supprimer"

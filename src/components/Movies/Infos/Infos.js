@@ -30,13 +30,11 @@ const Info = (props) => {
                             <h2>Date de sortie : {movie.release_date}</h2>
                             <h2>Catégories : {categoriesArray}</h2>
                             <p>Synopsis : {movie.description}</p>
-                            <Link to={`/movie/edit/${movie.id}`}
-                                className="edit-btn"
-                            >Modifier</Link>
+                            <Link to={`/movie/edit/${movie.id}`} className="edit-btn">Modifier</Link>
                             <Link to='/'
                                 className="delete-btn"
                                 onClick={() => props.deleteMovie(movie.id)}
-                                >Supprimer</Link>
+                            >Supprimer</Link>
                         </section>
                     </div>
                     <div className="wrapper">
@@ -44,7 +42,7 @@ const Info = (props) => {
                         <div className="cards">
                             {similarMovies && similarMovies.map((similarMovie, index) => (
                                 <figure key={index + similarMovie.title} className="card">
-                                    <img src={similarMovie.poster} />
+                                    <img src={similarMovie.poster} alt='poster' />
                                     <figcaption>{similarMovie.title}</figcaption>
                                 </figure>
                             ))}
@@ -55,7 +53,7 @@ const Info = (props) => {
                         <div className="cards">
                             {actorsArray && actorsArray.map((actor, index) => (
                                 <figure key={index + actor.name} className="card">
-                                    <img src={actor.photo} />
+                                    <img src={actor.photo} alt='acteur' />
                                     <figcaption>
                                         {actor.name + ' : ' + actor.character}
                                     </figcaption>

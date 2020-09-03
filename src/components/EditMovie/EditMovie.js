@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import EditForm from '../EditForm/EditForm';
 import { useHistory } from "react-router";
@@ -20,6 +20,7 @@ const EditMovie = (props) => {
         Axios.put(`http://localhost:3000/movies/${idUrl}`, movie)
             .then(response => {
                 console.log(response);
+                history.push('/');
             })
             .catch(error => {
                 console.log(error);

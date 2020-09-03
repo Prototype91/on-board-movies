@@ -22,3 +22,13 @@
 .Movie img {
     min-width: 182px;
 }
+
+.Movie a {
+    background-color: #BE72A4;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: .25rem;
+    font-size: 13px;
+    text-decoration: none;
+}

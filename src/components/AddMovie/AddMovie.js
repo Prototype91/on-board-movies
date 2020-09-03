@@ -58,20 +58,20 @@ const AddMovie = () => {
 
                 let actors = [];
                 actorsArray.map(actor => {
-                    actors.push({
+                    return (actors.push({
                         name: actor.name,
                         photo: `http://image.tmdb.org/t/p/w185${actor.profile_path}`,
                         character: actor.character
-                    })
+                    }))
                 });
 
                 let similarMovies = [];
                 similarArray.map(similarMovie => {
-                    similarMovies.push({
+                    return(similarMovies.push({
                         title: similarMovie.title,
                         poster: `http://image.tmdb.org/t/p/w185${similarMovie.poster_path}`,
                         release_date: similarMovie.release_date
-                    })
+                    }))
                 })
 
 

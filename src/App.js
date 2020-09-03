@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Axios from 'axios';
-import { useHistory } from "react-router";
 import Movies from './components/Movies/Movies';
 import AddMovies from './components/AddMovie/AddMovie';
 import EditMovie from './components/EditMovie/EditMovie';
