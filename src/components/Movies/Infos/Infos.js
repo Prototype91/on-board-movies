@@ -1,21 +1,22 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { goToTop } from 'react-scrollable-anchor';
 import defaultImage from '../../../assets/no-image.png';
 import './Infos.css';
 
 const Info = (props) => {
+    goToTop();
     let id = useParams();
     let filteredMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id));
     let movie = filteredMovie[0];
     let actorsArray;
     let categoriesArray;
     let similarMovies;
-    console.log('MOOOVIES', props.movies);
+
     if (movie) {
         actorsArray = movie.actors;
         categoriesArray = movie.categories.map(category => category).join(' , ');
         similarMovies = movie.similar_movies;
-        console.log(actorsArray)
     }
 
     return (
@@ -29,7 +30,7 @@ const Info = (props) => {
                             <h1>Titre : {movie.title}</h1>
                             <h2>Date de sortie : {movie.release_date}</h2>
                             <h2>Catégories : {categoriesArray}</h2>
-                            <p>Synopsis : {movie.description}</p>
+                            <h2>Synopsis : {movie.description}</h2>
                             <Link to={`/movie/edit/${movie.id}`} className="edit-btn">Modifier</Link>
                             <Link to='/'
                                 className="delete-btn"

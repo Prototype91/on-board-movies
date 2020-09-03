@@ -12,6 +12,7 @@
 .Infos img {
     width: 20%;
     min-width: 200px;
+    border-radius: 25px;
 }
 
 .Infos input {

@@ -11,10 +11,8 @@ const Movies = (props) => {
     const history = useHistory();
 
     const viewMovieInfo = (id) => {
-        console.log('ID : ', id);
         const filteredMovie = props.movies.filter(movie => movie.id === id);
         setCurrentMovie(filteredMovie);
-        console.log(filteredMovie);
         history.push(`/infos/${id}`);
     }
 
@@ -34,7 +32,7 @@ const Movies = (props) => {
                     editMovie={props.editMovie}
                 />
             )) : <p>Aucun film dans votre bibliotèque</p>}
-                {currentMovie && <Infos />}
+            {currentMovie && <Infos />}
         </article>
     );
 }

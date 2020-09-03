@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import EditForm from '../EditForm/EditForm';
 import { useHistory } from "react-router";
+import { goToTop } from 'react-scrollable-anchor';
+import EditForm from '../EditForm/EditForm';
 import Axios from 'axios';
 import './EditMovie.css';
 
 const EditMovie = (props) => {
+    goToTop();
+
     let id = useParams();
     let filteredMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id));
+
     const [movie, setMovie] = useState(filteredMovie[0]);
     const history = useHistory();
-
-    console.log("MOVIE MODIFIED TO BE SEND : ", movie)
 
     const replaceFavorite = (e, movie, id) => {
         let idUrl = id;
@@ -20,6 +22,7 @@ const EditMovie = (props) => {
         Axios.put(`http://localhost:3000/movies/${idUrl}`, movie)
             .then(response => {
                 console.log(response);
+                goToTop();
                 history.push('/');
             })
             .catch(error => {
@@ -28,11 +31,9 @@ const EditMovie = (props) => {
     }
 
     const updateFavoriteMovieData = (event, index) => {
-
         const target = event.target;
         const value = target.value;
         const name = target.name;
-
         const data = { ...movie };
 
         switch (name) {

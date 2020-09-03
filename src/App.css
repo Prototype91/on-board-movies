@@ -26,7 +26,9 @@ h2 {
     color: #ccc;
 }
 
-label, p, a {
+label,
+p,
+a {
     color: #ccc
 }
 
@@ -175,4 +177,8 @@ input:hover {
 
 .wrapper h2 {
     text-align: center;
+}
+
+.wrapper figure {
+    border-radius: 25px;
 }

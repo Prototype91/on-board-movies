@@ -3,8 +3,6 @@ import './EditForm.css';
 
 const EditForm = (props) => {
     let movie = props.movie;
-    
-    console.log('MOVIE TO SEND EDIT FORM', movie);
 
     return (
         <div className='EditForm'>
@@ -49,7 +47,7 @@ const EditForm = (props) => {
                     {movie.similar_movies !== undefined &&
                         movie.similar_movies.map((movie, index) => (
                             < >
-                                <label key={"movieLabel" + index} htmlFor="similar_movies">Titres similaires {index + 1} :</label>
+                                <label key={"movieLabel" + index} htmlFor="similar_movies">Films similaires {index + 1} :</label>
                                 <input
                                     key={"movieInput" + index}
                                     type="text"

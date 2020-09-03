@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { useHistory } from "react-router";
+import { goToTop } from 'react-scrollable-anchor';
 import SearchResult from '../SearchResult/SearchResult';
 import StepTwoAddMovie from './StepTwoAddMovie/StepTwoAddMovie'
 import SearchBar from './SearchBar/SearchBar';
-import { useHistory } from "react-router";
 import './AddMovie.css';
+
 
 const AddMovie = () => {
     const BASE_URL = 'https://api.themoviedb.org/3/search/movie?';
@@ -55,6 +57,7 @@ const AddMovie = () => {
 
                 let actorsArray = actorsResponse.data.cast.slice(0, 4);
                 let similarArray = similarMoviesResponse.data.results.slice(0, 3);
+                let categoriesArray = categoriesResponse.data.genres.map(category => category.name);
 
                 let actors = [];
                 actorsArray.map(actor => {
@@ -67,15 +70,12 @@ const AddMovie = () => {
 
                 let similarMovies = [];
                 similarArray.map(similarMovie => {
-                    return(similarMovies.push({
+                    return (similarMovies.push({
                         title: similarMovie.title,
                         poster: `http://image.tmdb.org/t/p/w185${similarMovie.poster_path}`,
                         release_date: similarMovie.release_date
                     }))
                 })
-
-
-                const categoriesArray = categoriesResponse.data.genres.map(category => category.name);
 
                 setMovieToSend({
                     title: currentMovie.title,
@@ -94,7 +94,6 @@ const AddMovie = () => {
     }
 
     const onUpdateFormData = (event, index) => {
-        console.log('OnUpdateFormData', event, index);
         const target = event.target;
         const value = target.value;
         const name = target.name;
@@ -114,7 +113,6 @@ const AddMovie = () => {
             default:
                 data[name] = value;
         }
-
         setMovieToSend(data);
     }
 
@@ -138,7 +136,8 @@ const AddMovie = () => {
         Axios.post('http://localhost:3000/movies', movie)
             .then(response => {
                 console.log(response);
-                history.goBack();
+                goToTop();
+                history.push('/');
             })
             .catch(error => {
                 console.log(error);

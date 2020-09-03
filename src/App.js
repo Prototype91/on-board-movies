@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Axios from 'axios';
+import { goToTop } from 'react-scrollable-anchor';
 import Movies from './components/Movies/Movies';
 import AddMovies from './components/AddMovie/AddMovie';
 import EditMovie from './components/EditMovie/EditMovie';
@@ -10,8 +11,9 @@ import './App.css';
 
 const App = () => {
 
-  const [movies, setMovies] = useState([]);
+  goToTop()
 
+  const [movies, setMovies] = useState([]);
   const REQUEST_URL = 'http://localhost:3000/movies';
 
   useEffect(() => {
@@ -36,8 +38,6 @@ const App = () => {
         console.log(error);
       })
   }
-
-  
 
   return (
     <Router>
