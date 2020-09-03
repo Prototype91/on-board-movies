@@ -3,7 +3,6 @@ import Movie from './Movie/Movie';
 import { useHistory } from "react-router";
 import Infos from './Infos/Infos';
 import './Movies.css';
-import Axios from 'axios';
 
 const Movies = (props) => {
 
@@ -19,33 +18,23 @@ const Movies = (props) => {
         history.push(`/infos/${id}`);
     }
 
-    const deleteMovie = (id) => {
-        Axios.delete(`http://localhost:3000/movies/${id}`)
-            .then(response => {
-                console.log(response);
-                window.location.reload(false);
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    }
-
     return (
         <article className="Movies">
-                <h1 className="title-movies">Ma Bibliothèque : </h1>
-                {props.movies.length > 0 && currentMovie === null ? props.movies.map((movie, index) => (
-                    <Movie
-                        id={movie.id}
-                        key={index}
-                        title={movie.title}
-                        release_date={movie.release_date}
-                        description={movie.description}
-                        poster={movie.poster}
-                        viewMovieInfo={viewMovieInfo}
-                        deleteMovie={deleteMovie}
-                    />
-                )) : <p>Aucun film dans votre bibliotèque</p>}
-                {currentMovie && <Infos title={currentMovie[0].title} />}
+            <h1 className="title-movies">Ma Bibliothèque : </h1>
+            {props.movies.length > 0 && currentMovie === null ? props.movies.map((movie, index) => (
+                <Movie
+                    id={movie.id}
+                    key={index}
+                    title={movie.title}
+                    release_date={movie.release_date}
+                    description={movie.description}
+                    poster={movie.poster}
+                    viewMovieInfo={viewMovieInfo}
+                    deleteMovie={props.deleteMovie}
+                    editMovie={props.editMovie}
+                />
+            )) : <p>Aucun film dans votre bibliotèque</p>}
+                {currentMovie && <Infos />}
         </article>
     );
 }

@@ -18,16 +18,6 @@ const AddMovie = () => {
 
     const history = useHistory();
 
-    const [formData, setFormData] = useState({
-        title: '',
-        release_date: '',
-        categories: [],
-        similar_movies: [],
-        actors: [],
-        original_language: '',
-        description: ''
-    });
-
     const startSearch = (e) => {
         e.preventDefault();
         Axios.get(`${BASE_URL}api_key=${API_KEY}&query=${titleParam}&primary_release_year=${dateParam}`)
@@ -63,7 +53,7 @@ const AddMovie = () => {
                 const similarMoviesResponse = response[1];
                 const categoriesResponse = response[2];
 
-                let actorsArray = actorsResponse.data.cast.slice(0, 3);
+                let actorsArray = actorsResponse.data.cast.slice(0, 4);
                 let similarArray = similarMoviesResponse.data.results.slice(0, 3);
 
                 let actors = [];
@@ -103,8 +93,29 @@ const AddMovie = () => {
             });
     }
 
-    const onUpdateFormData = (e, index) => {
-        console.log('OnUpdateFormData', e, index);
+    const onUpdateFormData = (event, index) => {
+        console.log('OnUpdateFormData', event, index);
+        const target = event.target;
+        const value = target.value;
+        const name = target.name;
+
+        const data = { ...movieToSend };
+
+        switch (name) {
+            case 'categories':
+                data.categories[index] = target.value;
+                break;
+            case 'similar_movies':
+                data.similar_movies[index].title = target.value;
+                break;
+            case 'actors':
+                data.actors[index].name = target.value;
+                break;
+            default:
+                data[name] = value;
+        }
+
+        setMovieToSend(data);
     }
 
     const changeHandler = (e) => {

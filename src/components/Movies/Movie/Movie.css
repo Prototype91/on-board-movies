@@ -6,12 +6,6 @@
     border-radius: .25rem;
 }
 
-.Movie {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
 .Movie p {
     font-size: 15px;
     color: white

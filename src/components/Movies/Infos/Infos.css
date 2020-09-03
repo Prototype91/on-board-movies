@@ -27,3 +27,14 @@
     width: 80%;
     margin: auto;
 }
+
+.Infos a {
+    background-color: #BE72A4;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: .25rem;
+    margin-right: 10px;
+    text-decoration: none;
+    font-size: 13px;
+}
