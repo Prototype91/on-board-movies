@@ -19,7 +19,12 @@ const Movie = (props) => {
                 <p>Sortie : {props.release_date}</p>
                 <p>Synopsis : {props.description.substring(0, 200)}...</p>
                 <input type="submit" value="Modifier" className="edit-btn"></input>
-                <input type="submit" value="Supprimer" className="delete-btn"></input>
+                <input
+                    type="submit"
+                    value="Supprimer"
+                    className="delete-btn"
+                    onClick={() => props.deleteMovie(props.id)} 
+                />
             </div>
         </div>
     );
