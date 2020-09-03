@@ -3,7 +3,6 @@ import Axios from 'axios';
 import SearchResult from '../SearchResult/SearchResult';
 import StepTwoAddMovie from './StepTwoAddMovie/StepTwoAddMovie'
 import SearchBar from './SearchBar/SearchBar';
-import searchImg from '../../assets/original.png';
 import './AddMovie.css';
 
 const AddMovie = () => {
@@ -17,10 +16,15 @@ const AddMovie = () => {
     const [currentMovie, setCurrentMovie] = useState(null);
     const [stepTwo, setStepTwo] = useState(false);
 
-    const [formValues, setFormValues] = useState({
+    const [formData, setFormData] = useState({
         title: '',
-        release_date: ''
-    })
+        release_date: '',
+        categories: [],
+        similar_movies: [],
+        actors: [],
+        original_language: '',
+        description: ''
+    });
 
     const startSearch = (e) => {
         e.preventDefault();
@@ -32,10 +36,6 @@ const AddMovie = () => {
             .catch(error => {
                 console.log(error);
             })
-    }
-
-    const updateFormValues = () => {
-        console.log('Value Updated');
     }
 
     const getCurrentMovie = (id) => {
@@ -71,6 +71,10 @@ const AddMovie = () => {
             .catch(error => {
                 console.log(error);
             })
+    }
+
+    const onUpdateFormData = (e, index) => {
+        console.log('OnUpdate', e, index);
     }
 
     const changeHandler = (e) => {
@@ -119,12 +123,13 @@ const AddMovie = () => {
                         poster={`http://image.tmdb.org/t/p/w185${movie.poster_path}`}
                     />
                 ))}
-                {currentMovie !== null && stepTwo &&
-                    <StepTwoAddMovie
-                        movie={currentMovie}
-                        pushToFavorites={pushToFavorites}
-                    />}
             </div>
+            {currentMovie !== null && stepTwo &&
+                <StepTwoAddMovie
+                    movie={currentMovie}
+                    pushToFavorites={pushToFavorites}
+                    onUpdateFormData={onUpdateFormData}
+                />}
         </div>
     );
 }

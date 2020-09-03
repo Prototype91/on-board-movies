@@ -1,18 +1,15 @@
 .Filter form {
-    display: -webkit-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .Filter form>input {
-    -webkit-box-flex: 1;
     flex: 1 1 10ch;
     margin: .5rem
 }
 
 .Filter form>input[type="email"] {
-    -webkit-box-flex: 3;
     flex: 3 1 30ch;
 }
 

@@ -8,7 +8,6 @@ const Movie = (props) => {
             <div className="wrapper">
                 <div className="cards">
                     <figure className="card" onClick={() => props.viewMovieInfo(props.id)}>
-                        <img src={props.poster} />
                         {props.poster === null ?
                             <img src={defaultImage} alt="Poster" /> :
                             <img src={props.poster} alt="Poster" />}
@@ -17,8 +16,8 @@ const Movie = (props) => {
                         </figcaption>
                     </figure>
                 </div>
-                <p>{props.release_date}</p>
-                <p>{props.description.substring(0, 200)}...</p>
+                <p>Sortie : {props.release_date}</p>
+                <p>Synopsis : {props.description.substring(0, 200)}...</p>
                 <input type="submit" value="Modifier" className="edit-btn"></input>
                 <input type="submit" value="Supprimer" className="delete-btn"></input>
             </div>
@@ -31,8 +30,8 @@ const Movie = (props) => {
                         </figcaption>
                     </figure>
                 </div>
-                <p>{props.release_date}</p>
-                <p>{props.description.substring(0, 200)}...</p>
+                <p>Sortie : {props.release_date}</p>
+                <p>Synopsis : {props.description.substring(0, 200)}...</p>
                 <input type="submit" value="Modifier" className="edit-btn"></input>
                 <input type="submit" value="Supprimer" className="delete-btn"></input>
             </div>

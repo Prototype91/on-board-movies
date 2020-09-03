@@ -6,6 +6,12 @@
     border-radius: .25rem;
 }
 
+.Movie {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .Movie p {
     font-size: 15px;
     color: white
@@ -13,10 +19,12 @@
 
 .Movie .wrapper {
     text-align: center;
-    width: 80%;
-    margin: auto;
 }
 
 .Movie .delete-btn {
     margin-left: 10px;
+}
+
+.Movie img {
+    min-width: 182px;
 }

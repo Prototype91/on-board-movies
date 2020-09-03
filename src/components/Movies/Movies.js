@@ -20,7 +20,6 @@ const Movies = (props) => {
 
     return (
         <article className="Movies">
-            <section className="row">
                 <h1 className="title-movies">Ma Bibliothèque : </h1>
                 {props.movies.length > 0 && currentMovie === null ? props.movies.map((movie, index) => (
                     <Movie
@@ -34,7 +33,6 @@ const Movies = (props) => {
                     />
                 )) : <p>Aucun film dans votre bibliotèque</p>}
                 {currentMovie && <Infos title={currentMovie[0].title} />}
-            </section>
         </article>
     );
 }

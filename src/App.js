@@ -4,8 +4,8 @@ import Axios from 'axios';
 import Movies from './components/Movies/Movies';
 import AddMovies from './components/AddMovie/AddMovie';
 import Filter from './components/Filter/Filter';
-import './App.css';
 import Info from './components/Movies/Infos/Infos';
+import './App.css';
 
 const App = () => {
 

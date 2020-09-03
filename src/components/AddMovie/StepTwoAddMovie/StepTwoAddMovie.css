@@ -1,6 +1,8 @@
 .StepTwoAddMovie form {
     display: flex;
     flex-direction: column;
+    width: 80%;
+    margin: auto;
 }
 
 .StepTwoAddMovie form>input {
