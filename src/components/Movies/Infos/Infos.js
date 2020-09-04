@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { goToTop } from 'react-scrollable-anchor';
+import uniqid from 'uniqid';
 import defaultImage from '../../../assets/no-image.png';
 import './Infos.css';
 
@@ -51,7 +52,7 @@ const Info = (props) => {
                         {similarMovies.length > 0 && <h2>Films Similaires :</h2>}
                         <div className="cards">
                             {similarMovies.length > 0 && similarMovies.map((similarMovie, index) => (
-                                <figure key={index + similarMovie.title} className="card">
+                                <figure key={uniqid()} className="card">
                                     {similarMovie.poster === 'http://image.tmdb.org/t/p/w185null' ?
                                         <img src={defaultImage} alt='acteur' /> : <img src={similarMovie.poster} alt='poster' />}
                                     <figcaption>
@@ -65,7 +66,7 @@ const Info = (props) => {
                         {actorsArray.length > 0 && <h2>Acteurs du film :</h2>}
                         <div className="cards">
                             {actorsArray.length > 0 && actorsArray.map((actor, index) => (
-                                <figure key={index + actor.name} className="card">
+                                <figure key={uniqid()} className="card">
                                     {actor.photo === 'http://image.tmdb.org/t/p/w185null' ?
                                         <img src={defaultImage} alt='acteur' /> : <img src={actor.photo} alt='acteur' />}
                                     <figcaption>

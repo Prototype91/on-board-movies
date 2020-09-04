@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router";
 import { goToTop } from 'react-scrollable-anchor';
+import uniqid from 'uniqid';
 import SearchResult from './SearchResult/SearchResult';
 import StepTwoAddMovie from './StepTwoAddMovie/StepTwoAddMovie'
 import SearchBar from './SearchBar/SearchBar';
@@ -173,7 +174,7 @@ const AddMovie = (props) => {
     }
 
     return (
-        <>
+        <React.Fragment>
             <div className="AddMovies">
                 {!stepTwo &&
                     <SearchBar
@@ -190,7 +191,7 @@ const AddMovie = (props) => {
                             <SearchResult
                                 id={movie.id}
                                 getCurrentMovie={getCurrentMovie}
-                                key={index}
+                                key={uniqid()}
                                 title={movie.title}
                                 release_date={movie.release_date}
                                 poster={`http://image.tmdb.org/t/p/w185${movie.poster_path}`}
@@ -205,7 +206,7 @@ const AddMovie = (props) => {
                         goBackToSearch={goBackToSearch}
                     />}
             </div>
-        </>
+        </React.Fragment>
     );
 }
 

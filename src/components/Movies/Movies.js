@@ -3,6 +3,7 @@ import Movie from './Movie/Movie';
 import Filter from './Filter/Filter';
 import { useHistory } from "react-router";
 import { Link } from 'react-router-dom';
+import uniqid from 'uniqid';
 import './Movies.css';
 
 const Movies = (props) => {
@@ -33,7 +34,7 @@ const Movies = (props) => {
             {props.movies.length > 0 ? props.movies.map((movie, index) => (
                 <Movie
                     id={movie.id}
-                    key={index}
+                    key={uniqid()}
                     title={movie.title}
                     release_date={movie.release_date}
                     description={movie.description}
