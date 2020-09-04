@@ -31,6 +31,7 @@ const Info = (props) => {
 
     return (
         <div>
+            <Link to="/">Retour</Link>
             {movie !== undefined ?
                 <div>
                     <div className='ctn'>
@@ -54,7 +55,7 @@ const Info = (props) => {
                             {similarMovies.length > 0 && similarMovies.map((similarMovie, index) => (
                                 <figure key={index + similarMovie.title} className="card">
                                     {similarMovie.poster === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt='acteur' /> : <img src={similarMovie.poster} alt='poster' />}
-                                    <figcaption>{similarMovie.title}</figcaption>
+                                    <figcaption><p>{similarMovie.title}</p></figcaption>
                                 </figure>
                             ))}
                         </div>
@@ -66,7 +67,7 @@ const Info = (props) => {
                                 <figure key={index + actor.name} className="card">
                                     {actor.photo === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt='acteur' /> : <img src={actor.photo} alt='acteur' />}
                                     <figcaption>
-                                        {actor.name + ' : ' + actor.character}
+                                        <p>{actor.name + ' : ' + actor.character}</p>
                                     </figcaption>
                                 </figure>
                             ))}

@@ -4,7 +4,7 @@ import './EditForm.css';
 const EditForm = (props) => {
     // This is the movie ready to be manipulated and updated
     let movie = props.movie;
-    console.log(movie)
+    console.log(movie);
 
     return (
         <div className='EditForm'>
@@ -19,7 +19,6 @@ const EditForm = (props) => {
                         required
                         onChange={(e) => props.onUpdateFormData(e)}
                     />
-
                     <label htmlFor="date">Date de sortie :</label>
                     <input
                         type="text"
@@ -29,10 +28,9 @@ const EditForm = (props) => {
                         required
                         onChange={(e) => props.onUpdateFormData(e)}
                     />
-
                     {movie.categories !== undefined &&
                         movie.categories.map((category, index) => (
-                            < >
+                            <>
                                 <label key={"categoryLabel" + index} htmlFor="similar">Catégorie {index + 1} :</label>
                                 <input
                                     key={"categoryInput" + index}
@@ -45,10 +43,9 @@ const EditForm = (props) => {
                             </>
                         ))
                     }
-
                     {movie.similar_movies !== undefined &&
                         movie.similar_movies.map((movie, index) => (
-                            < >
+                            <>
                                 <label key={"movieLabel" + index} htmlFor="similar_movies">Film similaire {index + 1} :</label>
                                 <input
                                     key={"movieInput" + index}
@@ -61,10 +58,9 @@ const EditForm = (props) => {
                             </>
                         ))
                     }
-
                     {movie.actors !== undefined &&
                         movie.actors.map((actor, index) => (
-                            < >
+                            <>
                                 <label key={"actorLabel" + index} htmlFor="actor">Acteur {index + 1} :</label>
                                 <input
                                     key={"actorInput" + index}
@@ -76,7 +72,6 @@ const EditForm = (props) => {
                             </>
                         ))
                     }
-
                     <label htmlFor="overview">Description :</label>
                     <textarea
                         cols="50"
@@ -87,10 +82,8 @@ const EditForm = (props) => {
                         required
                         onChange={(e) => props.onUpdateFormData(e)}
                     />
-
                     <input type="submit" className="submit" value='Ajouter'></input>
-                </form>
-            }
+                </form>}
         </div>
     );
 }

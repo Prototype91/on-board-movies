@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import { Link } from 'react-router-dom';
 import { useHistory } from "react-router";
 import { goToTop } from 'react-scrollable-anchor';
 import SearchResult from '../SearchResult/SearchResult';
@@ -7,8 +8,7 @@ import StepTwoAddMovie from './StepTwoAddMovie/StepTwoAddMovie'
 import SearchBar from './SearchBar/SearchBar';
 import './AddMovie.css';
 
-
-const AddMovie = () => {
+const AddMovie = (props) => {
     // Base url and API key
     const BASE_URL = 'https://api.themoviedb.org/3/search/movie?';
     const API_KEY = '4d196b83a81a1379fde8fb79e2df0116';
@@ -154,12 +154,14 @@ const AddMovie = () => {
     const pushToFavorites = (e, movie) => {
         e.preventDefault();
         console.log("Pushed", JSON.stringify(movie));
-
         // Posting the movie
         Axios.post('http://localhost:3000/movies', movie)
             .then(response => {
                 console.log(response);
                 goToTop();
+                // Updates your favorite movies
+                props.updateFavoriteMovies();
+                // Goes to home page
                 history.push('/');
             })
             .catch(error => {
@@ -167,7 +169,13 @@ const AddMovie = () => {
             });
     }
 
+    const goBackToSearch = () => {
+        setStepTwo(false);
+    }
+
     return (
+        <>
+        {!stepTwo && <Link to="/">Retour</Link>}
         <div className="AddMovies">
             {!stepTwo && <SearchBar
                 startSearch={startSearch}
@@ -190,8 +198,10 @@ const AddMovie = () => {
                     movie={movieToSend}
                     pushToFavorites={pushToFavorites}
                     onUpdateFormData={onUpdateFormData}
+                    goBackToSearch={goBackToSearch}
                 />}
         </div>
+        </>
     );
 }
 

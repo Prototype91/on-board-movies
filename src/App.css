@@ -186,3 +186,12 @@ input:hover {
 .wrapper figure {
     border-radius: 25px;
 }
+
+figcaption p {
+    color: white;
+    background-color: hotpink;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 17px;
+    padding: 5px;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useHistory } from "react-router";
 import { goToTop } from 'react-scrollable-anchor';
 import EditForm from '../EditForm/EditForm';
@@ -32,6 +32,8 @@ const EditMovie = (props) => {
             .then(response => {
                 console.log(response);
                 goToTop();
+                // Updates you favorite movies
+                props.updateFavoriteMovies();
                 // Go back to your favorite movies
                 history.push('/');
             })
@@ -69,6 +71,7 @@ const EditMovie = (props) => {
 
     return (
         <div className='EditMovie'>
+            <Link to="/">Retour</Link>
             <h1>Modifier le film : </h1>
             <EditForm
                 movie={movie}
