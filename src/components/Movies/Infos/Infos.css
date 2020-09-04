@@ -13,6 +13,7 @@
     width: 20%;
     min-width: 200px;
     border-radius: 25px;
+    margin-top: 20px;
 }
 
 .Infos input {
@@ -29,7 +30,7 @@
     margin: auto;
 }
 
-.Infos a {
+.Infos .delete-btn, .Infos .edit-btn {
     background-color: #BE72A4;
     color: white;
     padding: 10px;

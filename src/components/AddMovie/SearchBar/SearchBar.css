@@ -1,11 +1,12 @@
 .SearchBar form {
     display: flex;
-    flex-wrap: wrap
+    flex-wrap: wrap;
 }
 
 .SearchBar form>input {
     flex: 1 1 10ch;
-    margin: .5rem
+    margin: .5rem;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .SearchBar form>input[type="email"] {

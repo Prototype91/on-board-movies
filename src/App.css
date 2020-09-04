@@ -32,9 +32,38 @@ a {
     color: #ccc
 }
 
+.back-link {
+    padding: 10px;
+    background-color: #BE72A4;
+    border-radius: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.back-ctn {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
 main {
     width: 80%;
     margin: auto;
+}
+
+input {
+    transform: border .2s;
+    border: 1px solid transparent;
+}
+
+input:active,
+input:focus {
+    outline: none;
+    border: 1px solid hotpink;
+
+
 }
 
 input:hover {

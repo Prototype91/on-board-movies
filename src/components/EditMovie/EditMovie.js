@@ -71,8 +71,8 @@ const EditMovie = (props) => {
 
     return (
         <div className='EditMovie'>
-            <Link to="/">Retour</Link>
             <h1>Modifier le film : </h1>
+            <div className='back-ctn'><Link className='back-link' to="/">Retour</Link></div>
             <EditForm
                 movie={movie}
                 pushToFavorites={replaceFavorite}

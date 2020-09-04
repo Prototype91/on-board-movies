@@ -23,7 +23,10 @@ const Movies = (props) => {
 
     return (
         <article className="Movies">
-            <h1 className="title-movies">Ma Bibliothèque : <Link className="addMovieLink" to='/addMovies'>Ajouter un Film</Link></h1>
+            <h1 className="title-movies">Ma Bibliothèque :</h1>
+            <div className='back-ctn'>
+                <Link className='back-link' to='/addMovies'>Ajouter un Film</Link>
+            </div>
             {props.movies.length > 0 && currentMovie === null ? props.movies.map((movie, index) => (
                 <Movie
                     id={movie.id}

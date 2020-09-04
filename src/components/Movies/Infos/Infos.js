@@ -31,12 +31,12 @@ const Info = (props) => {
 
     return (
         <div>
-            <Link to="/">Retour</Link>
             {movie !== undefined ?
                 <div>
                     <div className='ctn'>
                         <section className="Infos">
                             <h1>Voici le détail du film {movie.title}</h1>
+                            <div className='back-ctn'><Link className='back-link' to="/">Retour</Link></div>
                             {movie.poster === null ? <img src={defaultImage} alt="Poster" /> : <img src={movie.poster} alt="Poster" />}
                             <h1>Titre : {movie.title}</h1>
                             <h2>Date de sortie : {movie.release_date}</h2>

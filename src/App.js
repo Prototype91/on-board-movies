@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Axios from 'axios';
-import { goToTop } from 'react-scrollable-anchor';
 import Movies from './components/Movies/Movies';
 import AddMovies from './components/AddMovie/AddMovie';
 import EditMovie from './components/EditMovie/EditMovie';
@@ -10,9 +9,6 @@ import Info from './components/Movies/Infos/Infos';
 import './App.css';
 
 const App = () => {
-
-  // Goes to top of the page
-  goToTop()
 
   // Hook for you favorite movies
   const [movies, setMovies] = useState([]);

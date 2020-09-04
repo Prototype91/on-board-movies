@@ -21,7 +21,7 @@ const EditForm = (props) => {
                     />
                     <label htmlFor="date">Date de sortie :</label>
                     <input
-                        type="text"
+                        type="date"
                         name="release_date"
                         defaultValue={movie.release_date}
                         placeholder="Date au format jj-mm-aaaa"

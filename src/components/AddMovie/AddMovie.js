@@ -80,7 +80,7 @@ const AddMovie = (props) => {
                         name: actor.name,
                         photo: `http://image.tmdb.org/t/p/w185${actor.profile_path}`,
                         character: actor.character
-                    }))
+                    }));
                 });
 
                 // getting similar movies
@@ -90,7 +90,7 @@ const AddMovie = (props) => {
                         title: similarMovie.title,
                         poster: `http://image.tmdb.org/t/p/w185${similarMovie.poster_path}`,
                         release_date: similarMovie.release_date
-                    }))
+                    }));
                 })
 
                 // Building the movie to send
@@ -175,12 +175,12 @@ const AddMovie = (props) => {
 
     return (
         <>
-        {!stepTwo && <Link to="/">Retour</Link>}
         <div className="AddMovies">
             {!stepTwo && <SearchBar
                 startSearch={startSearch}
                 changeHandler={changeHandler}
             />}
+            {!stepTwo &&<div className='back-ctn'><Link className='back-link' to="/">Retour</Link></div>}
             <div className="results">
                 {searchedResults.length > 0 && !stepTwo && searchedResults.map((movie, index) => (
                     <SearchResult
