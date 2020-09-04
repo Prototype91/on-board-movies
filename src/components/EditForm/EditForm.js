@@ -4,7 +4,6 @@ import './EditForm.css';
 const EditForm = (props) => {
     // This is the movie ready to be manipulated and updated
     let movie = props.movie;
-    console.log(movie);
 
     return (
         <div className='EditForm'>

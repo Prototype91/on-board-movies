@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Movie from './Movie/Movie';
+import Filter from './Filter/Filter';
 import { useHistory } from "react-router";
 import { Link } from 'react-router-dom';
 import './Movies.css';
@@ -14,8 +15,17 @@ const Movies = (props) => {
         history.push(`/infos/${id}`);
     }
 
+    // Function to filter your movies
+    const filterMovies = (e) => {
+        e.preventDefault();
+        console.log('FILTER MOVIES');
+    }
+
     return (
         <article className="Movies">
+            <Filter
+                filterMovies={filterMovies}
+            />
             <h1 className="title-movies">Ma Bibliothèque :</h1>
             <div className='back-ctn'>
                 <Link className='back-link' to='/addMovies'>Ajouter un Film</Link>

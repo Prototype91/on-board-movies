@@ -76,6 +76,7 @@ input:hover {
     text-decoration: none;
     font-size: 13px;
     font-family: 'Montserrat', sans-serif;
+    border: none;
 }
 
 .delete-btn, .add-btn {

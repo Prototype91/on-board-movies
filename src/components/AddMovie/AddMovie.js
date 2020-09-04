@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useHistory } from "react-router";
 import { goToTop } from 'react-scrollable-anchor';
-import SearchResult from '../SearchResult/SearchResult';
+import SearchResult from './SearchResult/SearchResult';
 import StepTwoAddMovie from './StepTwoAddMovie/StepTwoAddMovie'
 import SearchBar from './SearchBar/SearchBar';
 import './AddMovie.css';
@@ -153,7 +153,6 @@ const AddMovie = (props) => {
     // Function to post yous favorites movies
     const pushToFavorites = (e, movie) => {
         e.preventDefault();
-        console.log("Pushed", JSON.stringify(movie));
         // Posting the movie
         Axios.post('http://localhost:3000/movies', movie)
             .then(response => {

@@ -26,7 +26,6 @@ const Info = (props) => {
         actorsArray = movie.actors;
         categoriesArray = movie.categories.map(category => category).join(' , ');
         similarMovies = movie.similar_movies;
-        console.log(actorsArray)
     }
 
     return (

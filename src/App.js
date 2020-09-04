@@ -4,7 +4,6 @@ import Axios from 'axios';
 import Movies from './components/Movies/Movies';
 import AddMovies from './components/AddMovie/AddMovie';
 import EditMovie from './components/EditMovie/EditMovie';
-import Filter from './components/Filter/Filter';
 import Info from './components/Movies/Infos/Infos';
 import './App.css';
 
@@ -42,12 +41,6 @@ const App = () => {
       })
   }
 
-  // Function to filter your movies
-  const filterMovies = (e) => {
-    e.preventDefault();
-    console.log('FILTER MOVIES');
-  }
-
   // Function to update your favorite movies after editing, deleting or adding
   const updateFavoriteMovies = () => {
     Axios.get(REQUEST_URL)
@@ -66,9 +59,6 @@ const App = () => {
       <main>
         <Route exact path='/'>
           <h1>Bienvenue sur On-Board Movies</h1>
-          <Filter
-            filterMovies={filterMovies}
-          />
           <Movies
             movies={movies}
             deleteMovie={deleteMovie}

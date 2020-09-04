@@ -1,6 +1,6 @@
 import React from 'react';
 import './SearchResult.css';
-import defaultImage from '../../assets/no-image.png';
+import defaultImage from '../../../assets/no-image.png';
 
 const SearchResult = (props) => {
     return (
