@@ -2,7 +2,9 @@ import React from 'react';
 import './EditForm.css';
 
 const EditForm = (props) => {
+    // This is the movie ready to be manipulated and updated
     let movie = props.movie;
+    console.log(movie)
 
     return (
         <div className='EditForm'>
@@ -47,7 +49,7 @@ const EditForm = (props) => {
                     {movie.similar_movies !== undefined &&
                         movie.similar_movies.map((movie, index) => (
                             < >
-                                <label key={"movieLabel" + index} htmlFor="similar_movies">Films similaires {index + 1} :</label>
+                                <label key={"movieLabel" + index} htmlFor="similar_movies">Film similaire {index + 1} :</label>
                                 <input
                                     key={"movieInput" + index}
                                     type="text"

@@ -5,18 +5,28 @@ import defaultImage from '../../../assets/no-image.png';
 import './Infos.css';
 
 const Info = (props) => {
+    // Goes to the top of the page
     goToTop();
+
+    // Gets the id in the url
     let id = useParams();
+    // Check what movie you want to add
     let filteredMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id));
+    // This is the movie wanted
     let movie = filteredMovie[0];
+
+    // Declarations of specific data
     let actorsArray;
     let categoriesArray;
     let similarMovies;
 
+    // If the movie is defined and identified :
     if (movie) {
+        // Gets the data to display
         actorsArray = movie.actors;
         categoriesArray = movie.categories.map(category => category).join(' , ');
         similarMovies = movie.similar_movies;
+        console.log(actorsArray)
     }
 
     return (
@@ -39,22 +49,22 @@ const Info = (props) => {
                         </section>
                     </div>
                     <div className="wrapper">
-                        <h2>Films Similaires :</h2>
+                        {similarMovies.length > 0 && <h2>Films Similaires :</h2>}
                         <div className="cards">
-                            {similarMovies && similarMovies.map((similarMovie, index) => (
+                            {similarMovies.length > 0 && similarMovies.map((similarMovie, index) => (
                                 <figure key={index + similarMovie.title} className="card">
-                                    <img src={similarMovie.poster} alt='poster' />
+                                    {similarMovie.poster === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt='acteur' /> : <img src={similarMovie.poster} alt='poster' />}
                                     <figcaption>{similarMovie.title}</figcaption>
                                 </figure>
                             ))}
                         </div>
                     </div>
                     <div className="wrapper">
-                        <h2>Acteurs du film :</h2>
+                        {actorsArray.length > 0 && <h2>Acteurs du film :</h2>}
                         <div className="cards">
-                            {actorsArray && actorsArray.map((actor, index) => (
+                            {actorsArray.length > 0 && actorsArray.map((actor, index) => (
                                 <figure key={index + actor.name} className="card">
-                                    <img src={actor.photo} alt='acteur' />
+                                    {actor.photo === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt='acteur' /> : <img src={actor.photo} alt='acteur' />}
                                     <figcaption>
                                         {actor.name + ' : ' + actor.character}
                                     </figcaption>

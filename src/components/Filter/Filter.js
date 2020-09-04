@@ -1,14 +1,14 @@
 import React from 'react';
 import './Filter.css';
 
-const Filter = () => {
+const Filter = (props) => {
     return (
         <section className="Filter">
             <h1>Filtrer par :</h1>
-            <form>
+            <form onSubmit={(e) => props.filterMovies(e)}>
                 <input type="text" placeholder="Titre" name='title' required />
-                <input className='date' type="date" name='date' required />
-                <input className='category' type="text" placeholder='Catégorie' name='category' required />
+                <input className='date' type="date" name='date' />
+                <input className='category' type="text" placeholder='Catégorie' name='category' />
                 <input type="submit" value="Filtrer" />
             </form>
         </section>

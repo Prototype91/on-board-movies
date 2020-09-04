@@ -7,22 +7,32 @@ import Axios from 'axios';
 import './EditMovie.css';
 
 const EditMovie = (props) => {
-    goToTop();
 
-    let id = useParams();
-    let filteredMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id));
-
-    const [movie, setMovie] = useState(filteredMovie[0]);
     const history = useHistory();
 
+    // Gets the id in the url
+    let id = useParams();
+
+    // Checks what movie you want to edit
+    let filteredMovie = props.movies.filter(movie => Number(movie.id) === Number(id.id));
+
+    // Hook for movie to edit
+    const [movie, setMovie] = useState(filteredMovie[0]);
+
+    // Function to replace the movie with the new values
     const replaceFavorite = (e, movie, id) => {
-        let idUrl = id;
-        delete movie.id;
         e.preventDefault();
+        // Important : id for the url to put it in the local server
+        let idUrl = id;
+        // Movie obj must be sent without id
+        delete movie.id;
+
+        // This will replace the movie with the new values
         Axios.put(`http://localhost:3000/movies/${idUrl}`, movie)
             .then(response => {
                 console.log(response);
                 goToTop();
+                // Go back to your favorite movies
                 history.push('/');
             })
             .catch(error => {
@@ -30,12 +40,16 @@ const EditMovie = (props) => {
             })
     }
 
+    // Function to check the inputs values updates
     const updateFavoriteMovieData = (event, index) => {
+
+        // Gets the specific values of the inputs
         const target = event.target;
         const value = target.value;
         const name = target.name;
         const data = { ...movie };
 
+        // Checking what you are modifying
         switch (name) {
             case 'categories':
                 data.categories[index] = target.value;
@@ -49,7 +63,7 @@ const EditMovie = (props) => {
             default:
                 data[name] = value;
         }
-        
+        // Sets the new movie to update
         setMovie(data);
     }
 

@@ -47,6 +47,10 @@ input:hover {
     color: white;
 }
 
+.delete-btn {
+    font-family: 'Montserrat', sans-serif;
+}
+
 /* CARDS MOVIES */
 
 .wrapper .cards .card figcaption,

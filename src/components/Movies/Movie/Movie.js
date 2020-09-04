@@ -9,7 +9,7 @@ const Movie = (props) => {
             <div className="wrapper">
                 <div className="cards">
                     <figure className="card" onClick={() => props.viewMovieInfo(props.id)}>
-                        {props.poster === null ?
+                        {props.poster === 'http://image.tmdb.org/t/p/w185null' ?
                             <img src={defaultImage} alt="Poster" /> :
                             <img src={props.poster} alt="Poster" />}
                     </figure>

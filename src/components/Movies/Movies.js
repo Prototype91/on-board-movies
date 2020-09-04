@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import Movie from './Movie/Movie';
 import { useHistory } from "react-router";
+import { goToTop } from 'react-scrollable-anchor';
 import Infos from './Infos/Infos';
 import './Movies.css';
 
 const Movies = (props) => {
 
+    //Hook for the current movie
     const [currentMovie, setCurrentMovie] = useState(null);
 
     const history = useHistory();
 
+    // Function to set the movie to add and go to its infos
     const viewMovieInfo = (id) => {
+        // Get the movie
         const filteredMovie = props.movies.filter(movie => movie.id === id);
         setCurrentMovie(filteredMovie);
+        // Goes to Infos component with the movie id
         history.push(`/infos/${id}`);
     }
 
@@ -31,7 +36,7 @@ const Movies = (props) => {
                     deleteMovie={props.deleteMovie}
                     editMovie={props.editMovie}
                 />
-            )) : <p>Aucun film dans votre bibliotèque</p>}
+            )) : <h1>Aucun film dans votre bibliotèque</h1>}
             {currentMovie && <Infos />}
         </article>
     );

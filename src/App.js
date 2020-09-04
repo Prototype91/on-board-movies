@@ -11,11 +11,16 @@ import './App.css';
 
 const App = () => {
 
+  // Goes to top of the page
   goToTop()
 
+  // Hook for you favorite movies
   const [movies, setMovies] = useState([]);
+
+  // URL to get all your favorite movies
   const REQUEST_URL = 'http://localhost:3000/movies';
 
+  // Gets all your favorite movies
   useEffect(() => {
     Axios.get(REQUEST_URL)
       .then(movies => {
@@ -28,6 +33,7 @@ const App = () => {
       })
   }, []);
 
+  // Function to delete a movie from your favorites
   const deleteMovie = (id) => {
     Axios.delete(`http://localhost:3000/movies/${id}`)
       .then(response => {
@@ -39,12 +45,26 @@ const App = () => {
       })
   }
 
+  // Function to filter your movies
+  const filterMovies = (e) => {
+    e.preventDefault();
+    console.log('FILTER MOVIES');
+    Axios.get(`http://localhost:3000/movies/8`)
+      .then(movies => {
+        let myMovies = movies.data;
+        console.log('MY MOVIES FILTERED', myMovies);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
   return (
     <Router>
       <main>
         <Route exact path='/'>
           <h1>Bienvenue sur On-Board Movies</h1>
-          <Filter />
+          <Filter filterMovies={filterMovies} />
           <Movies
             movies={movies}
             deleteMovie={deleteMovie}
