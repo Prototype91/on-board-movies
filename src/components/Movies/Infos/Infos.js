@@ -36,17 +36,16 @@ const Info = (props) => {
                     <div className='ctn'>
                         <section className="Infos">
                             <h1>Voici le détail du film {movie.title}</h1>
-                            <div className='back-ctn'><Link className='back-link' to="/">Retour</Link></div>
+                            <div className='back-ctn'>
+                                <Link className='back-link' to="/">Retour</Link>
+                            </div>
                             {movie.poster === null ? <img src={defaultImage} alt="Poster" /> : <img src={movie.poster} alt="Poster" />}
                             <h1>Titre : {movie.title}</h1>
                             <h2>Date de sortie : {movie.release_date}</h2>
                             <h2>Catégories : {categoriesArray}</h2>
-                            <h2>Synopsis : {movie.description}</h2>
+                            <p>Synopsis : {movie.description}</p>
                             <Link to={`/movie/edit/${movie.id}`} className="edit-btn">Modifier</Link>
-                            <Link to='/'
-                                className="delete-btn"
-                                onClick={() => props.deleteMovie(movie.id)}
-                            >Supprimer</Link>
+                            <Link to='/' className="delete-btn" onClick={() => props.deleteMovie(movie.id)}>Supprimer</Link>
                         </section>
                     </div>
                     <div className="wrapper">
@@ -54,8 +53,11 @@ const Info = (props) => {
                         <div className="cards">
                             {similarMovies.length > 0 && similarMovies.map((similarMovie, index) => (
                                 <figure key={index + similarMovie.title} className="card">
-                                    {similarMovie.poster === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt='acteur' /> : <img src={similarMovie.poster} alt='poster' />}
-                                    <figcaption><p>{similarMovie.title}</p></figcaption>
+                                    {similarMovie.poster === 'http://image.tmdb.org/t/p/w185null' ?
+                                        <img src={defaultImage} alt='acteur' /> : <img src={similarMovie.poster} alt='poster' />}
+                                    <figcaption>
+                                        <p>{similarMovie.title}</p>
+                                    </figcaption>
                                 </figure>
                             ))}
                         </div>
@@ -65,7 +67,8 @@ const Info = (props) => {
                         <div className="cards">
                             {actorsArray.length > 0 && actorsArray.map((actor, index) => (
                                 <figure key={index + actor.name} className="card">
-                                    {actor.photo === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt='acteur' /> : <img src={actor.photo} alt='acteur' />}
+                                    {actor.photo === 'http://image.tmdb.org/t/p/w185null' ?
+                                        <img src={defaultImage} alt='acteur' /> : <img src={actor.photo} alt='acteur' />}
                                     <figcaption>
                                         <p>{actor.name + ' : ' + actor.character}</p>
                                     </figcaption>

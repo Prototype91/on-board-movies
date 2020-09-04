@@ -30,6 +30,10 @@
     margin: auto;
 }
 
+.Infos p {
+    margin-bottom: 20px;
+}
+
 .Infos .delete-btn, .Infos .edit-btn {
     background-color: #BE72A4;
     color: white;

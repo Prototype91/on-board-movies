@@ -19,7 +19,7 @@ const EditForm = (props) => {
                         required
                         onChange={(e) => props.onUpdateFormData(e)}
                     />
-                    <label htmlFor="date">Date de sortie :</label>
+                    <label htmlFor="release_date">Date de sortie :</label>
                     <input
                         type="date"
                         name="release_date"
@@ -31,7 +31,7 @@ const EditForm = (props) => {
                     {movie.categories !== undefined &&
                         movie.categories.map((category, index) => (
                             <>
-                                <label key={"categoryLabel" + index} htmlFor="similar">Catégorie {index + 1} :</label>
+                                <label key={"categoryLabel" + index} htmlFor="categories">Catégorie {index + 1} :</label>
                                 <input
                                     key={"categoryInput" + index}
                                     type="text"
@@ -61,10 +61,11 @@ const EditForm = (props) => {
                     {movie.actors !== undefined &&
                         movie.actors.map((actor, index) => (
                             <>
-                                <label key={"actorLabel" + index} htmlFor="actor">Acteur {index + 1} :</label>
+                                <label key={"actorLabel" + index} htmlFor="actors">Acteur {index + 1} :</label>
                                 <input
                                     key={"actorInput" + index}
-                                    type="text" name="actors"
+                                    type="text"
+                                    name="actors"
                                     defaultValue={actor.name}
                                     placeholder=""
                                     required
@@ -72,7 +73,7 @@ const EditForm = (props) => {
                             </>
                         ))
                     }
-                    <label htmlFor="overview">Description :</label>
+                    <label htmlFor="description">Description :</label>
                     <textarea
                         cols="50"
                         type="text"

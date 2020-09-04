@@ -17,7 +17,12 @@ const SearchResult = (props) => {
                     </figure>
                 </div>
                 <p>Sortie : {props.release_date}</p>
-                <input onClick={() => props.getCurrentMovie(props.id)} type="submit" value="Ajouter" className="add-btn"></input>
+                <input
+                    onClick={() => props.getCurrentMovie(props.id)}
+                    type="submit"
+                    value="Ajouter"
+                    className="add-btn"
+                />
             </div>
         </div>
     );

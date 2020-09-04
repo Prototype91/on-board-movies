@@ -46,14 +46,6 @@ const App = () => {
   const filterMovies = (e) => {
     e.preventDefault();
     console.log('FILTER MOVIES');
-    Axios.get(`http://localhost:3000/movies/8`)
-      .then(movies => {
-        let myMovies = movies.data;
-        console.log('MY MOVIES FILTERED', myMovies);
-      })
-      .catch(error => {
-        console.log(error);
-      })
   }
 
   // Function to update your favorite movies after editing, deleting or adding
@@ -74,14 +66,18 @@ const App = () => {
       <main>
         <Route exact path='/'>
           <h1>Bienvenue sur On-Board Movies</h1>
-          <Filter filterMovies={filterMovies} />
+          <Filter
+            filterMovies={filterMovies}
+          />
           <Movies
             movies={movies}
             deleteMovie={deleteMovie}
           />
         </Route>
         <Route exact path='/addMovies'>
-          <AddMovies updateFavoriteMovies={updateFavoriteMovies}/>
+          <AddMovies
+            updateFavoriteMovies={updateFavoriteMovies}
+          />
         </Route>
         <Route exact path='/infos/:id'>
           <Info
@@ -90,7 +86,10 @@ const App = () => {
           />
         </Route>
         <Route exact path='/movie/edit/:id'>
-          <EditMovie movies={movies} updateFavoriteMovies={updateFavoriteMovies} />
+          <EditMovie
+            movies={movies}
+            updateFavoriteMovies={updateFavoriteMovies}
+          />
         </Route>
       </main>
     </Router>

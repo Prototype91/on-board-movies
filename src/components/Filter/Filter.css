@@ -25,6 +25,7 @@
     color: white;
 }
 
-.Filter h1 {
+.Filter h1,
+.Filter h2 {
     text-align: center;
 }

@@ -2,21 +2,14 @@ import React, { useState } from 'react';
 import Movie from './Movie/Movie';
 import { useHistory } from "react-router";
 import { Link } from 'react-router-dom';
-import Infos from './Infos/Infos';
 import './Movies.css';
 
 const Movies = (props) => {
 
-    //Hook for the current movie
-    const [currentMovie, setCurrentMovie] = useState(null);
-
     const history = useHistory();
 
-    // Function to set the movie to add and go to its infos
+    // Function to set the movie and go to its infos
     const viewMovieInfo = (id) => {
-        // Get the movie
-        const filteredMovie = props.movies.filter(movie => movie.id === id);
-        setCurrentMovie(filteredMovie);
         // Goes to Infos component with the movie id
         history.push(`/infos/${id}`);
     }
@@ -27,7 +20,7 @@ const Movies = (props) => {
             <div className='back-ctn'>
                 <Link className='back-link' to='/addMovies'>Ajouter un Film</Link>
             </div>
-            {props.movies.length > 0 && currentMovie === null ? props.movies.map((movie, index) => (
+            {props.movies.length > 0 ? props.movies.map((movie, index) => (
                 <Movie
                     id={movie.id}
                     key={index}
@@ -39,8 +32,7 @@ const Movies = (props) => {
                     deleteMovie={props.deleteMovie}
                     editMovie={props.editMovie}
                 />
-            )) : <h1>Aucun film dans votre bibliotèque</h1>}
-            {currentMovie && <Infos />}
+            )) : <h1 className='no-movies'>Aucun film dans votre bibliotèque ...</h1>}
         </article>
     );
 }

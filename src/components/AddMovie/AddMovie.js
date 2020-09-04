@@ -175,32 +175,37 @@ const AddMovie = (props) => {
 
     return (
         <>
-        <div className="AddMovies">
-            {!stepTwo && <SearchBar
-                startSearch={startSearch}
-                changeHandler={changeHandler}
-            />}
-            {!stepTwo &&<div className='back-ctn'><Link className='back-link' to="/">Retour</Link></div>}
-            <div className="results">
-                {searchedResults.length > 0 && !stepTwo && searchedResults.map((movie, index) => (
-                    <SearchResult
-                        id={movie.id}
-                        getCurrentMovie={getCurrentMovie}
-                        key={index}
-                        title={movie.title}
-                        release_date={movie.release_date}
-                        poster={`http://image.tmdb.org/t/p/w185${movie.poster_path}`}
-                    />
-                ))}
+            <div className="AddMovies">
+                {!stepTwo &&
+                    <SearchBar
+                        startSearch={startSearch}
+                        changeHandler={changeHandler}
+                    />}
+                {!stepTwo &&
+                    <div className='back-ctn'>
+                        <Link className='back-link' to="/">Retour</Link>
+                    </div>}
+                <div className="results">
+                    {searchedResults.length > 0 && !stepTwo &&
+                        searchedResults.map((movie, index) => (
+                            <SearchResult
+                                id={movie.id}
+                                getCurrentMovie={getCurrentMovie}
+                                key={index}
+                                title={movie.title}
+                                release_date={movie.release_date}
+                                poster={`http://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                            />
+                        ))}
+                </div>
+                {movieToSend !== null && stepTwo &&
+                    <StepTwoAddMovie
+                        movie={movieToSend}
+                        pushToFavorites={pushToFavorites}
+                        onUpdateFormData={onUpdateFormData}
+                        goBackToSearch={goBackToSearch}
+                    />}
             </div>
-            {movieToSend !== null && stepTwo &&
-                <StepTwoAddMovie
-                    movie={movieToSend}
-                    pushToFavorites={pushToFavorites}
-                    onUpdateFormData={onUpdateFormData}
-                    goBackToSearch={goBackToSearch}
-                />}
-        </div>
         </>
     );
 }
