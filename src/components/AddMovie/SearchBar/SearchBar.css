@@ -17,7 +17,7 @@
 
 .SearchBar input {
     border: none;
-    background: hsl(0, 0%, 93%);
+    background: white;
     border-radius: .25rem;
     padding: .75rem 1rem
 }

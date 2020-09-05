@@ -30,27 +30,25 @@ const Info = (props) => {
     }
 
     return (
-        <div>
+        <React.Fragment key={uniqid()}>
             {movie !== undefined ?
-                <div>
-                    
-                    <div className='ctn'>
-                        <section className="Infos">
-                            <h1>Voici le détail du film {movie.title}</h1>
-                            {movie.backdrop !== 'http://image.tmdb.org/t/p/originalnull' && <img className='back-drop' src={movie.backdrop} />}
-                            <div className='back-ctn'>
-                                <Link className='back-link' to="/">Retour</Link>
-                            </div>
-                            {movie.poster === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt="Poster" /> : <img src={movie.poster} alt="Poster" />}
-                            <h1>Titre : {movie.title}</h1>
-                            <h2>Date de sortie : {movie.release_date}</h2>
-                            <h2>Catégories : {categoriesArray}</h2>
-                            <p>Synopsis : {movie.description}</p>
-                            <Link to={`/movie/edit/${movie.id}`} className="edit-btn">Modifier</Link>
-                            <Link to='/' className="delete-btn" onClick={() => props.deleteMovie(movie.id)}>Supprimer</Link>
-                        </section>
-                    </div>
-                    <div className="wrapper">
+                <article>
+                    <section className="Infos">
+                        <h1>Voici le détail du film {movie.title}</h1>
+                        {movie.backdrop !== 'http://image.tmdb.org/t/p/originalnull' &&
+                            <img className='back-drop' src={movie.backdrop} alt='backdrop' />}
+                        <div className='back-ctn'>
+                            <Link className='back-link' to="/">Retour</Link>
+                        </div>
+                        {movie.poster === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt="Poster" /> : <img src={movie.poster} alt="Poster" />}
+                        <h1>Titre : {movie.title}</h1>
+                        <h2>Date de sortie : {movie.release_date}</h2>
+                        <h2>Catégories : {categoriesArray}</h2>
+                        <p>Synopsis : {movie.description}</p>
+                        <Link to={`/movie/edit/${movie.id}`} className="edit-btn">Modifier</Link>
+                        <Link to='/' className="delete-btn" onClick={() => props.deleteMovie(movie.id)}>Supprimer</Link>
+                    </section>
+                    <section className="wrapper">
                         {similarMovies.length > 0 && <h2>Films Similaires :</h2>}
                         <div className="cards">
                             {similarMovies.length > 0 && similarMovies.map((similarMovie, index) => (
@@ -63,8 +61,8 @@ const Info = (props) => {
                                 </figure>
                             ))}
                         </div>
-                    </div>
-                    <div className="wrapper">
+                    </section>
+                    <section className="wrapper">
                         {actorsArray.length > 0 && <h2>Acteurs du film :</h2>}
                         <div className="cards">
                             {actorsArray.length > 0 && actorsArray.map((actor, index) => (
@@ -77,9 +75,10 @@ const Info = (props) => {
                                 </figure>
                             ))}
                         </div>
-                    </div>
-                </div> : <p>Aucun film en détail à afficher ...</p>}
-        </div>
+                    </section>
+                </article> :
+                <p>Aucun film en détail à afficher ...</p>}
+        </React.Fragment>
     );
 }
 

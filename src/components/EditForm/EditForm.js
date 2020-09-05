@@ -7,7 +7,7 @@ const EditForm = (props) => {
     let movie = props.movie;
 
     return (
-        <div className='EditForm'>
+        <section className='EditForm'>
             {movie &&
                 <form onSubmit={(e) => props.pushToFavorites(e, movie, movie.id)} >
                     <label htmlFor="title">Titre :</label>
@@ -87,7 +87,7 @@ const EditForm = (props) => {
                     />
                     <input type="submit" className="submit" value='Ajouter'></input>
                 </form>}
-        </div>
+        </section>
     );
 }
 

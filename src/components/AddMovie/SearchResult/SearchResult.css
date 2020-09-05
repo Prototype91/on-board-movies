@@ -1,4 +1,6 @@
-.SearchResult .add-btn {
+/* SearchResult */
+
+.add-btn {
     background-color: #BE72A4;
     color: white;
     padding: 10px;
@@ -6,6 +8,6 @@
     border-radius: .25rem;
 }
 
-.SearchResult .wrapper {
+.wrapper {
     text-align: center;
 }

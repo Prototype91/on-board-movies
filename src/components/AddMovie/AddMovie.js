@@ -74,7 +74,7 @@ const AddMovie = (props) => {
                 let similarArray = similarMoviesResponse.data.results.slice(0, 3);
                 let categoriesArray = categoriesResponse.data.genres.map(category => category.name);
 
-                // getting actors
+                // Getting actors
                 let actors = [];
                 actorsArray.map(actor => {
                     return (actors.push({
@@ -84,7 +84,7 @@ const AddMovie = (props) => {
                     }));
                 });
 
-                // getting similar movies
+                // Getting similar movies
                 let similarMovies = [];
                 similarArray.map(similarMovie => {
                     return (similarMovies.push({
@@ -169,6 +169,7 @@ const AddMovie = (props) => {
             });
     }
 
+    // Function to go back to search
     const goBackToSearch = () => {
         setStepTwo(false);
     }

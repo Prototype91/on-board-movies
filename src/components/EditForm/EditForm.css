@@ -1,3 +1,5 @@
+/* Edit Form */
+
 .EditForm form {
     display: flex;
     flex-direction: column;
@@ -11,7 +13,7 @@
 
 .EditForm input, .EditForm textarea {
     border: none;
-    background: hsl(0, 0%, 93%);
+    background: white;
     border-radius: .25rem;
     margin-bottom: 20px;
 }

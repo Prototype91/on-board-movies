@@ -1,3 +1,5 @@
+/* Infos */
+
 .Infos h1,
 .Infos h2,
 .Infos p {
@@ -24,11 +26,6 @@
     border: none;
     border-radius: .25rem;
     margin-right: 10px;
-}
-
-.Infos .ctn {
-    width: 80%;
-    margin: auto;
 }
 
 .Infos p {
