@@ -61,6 +61,10 @@ input:hover {
     cursor: pointer;
 }
 
+input[type="date"] {
+    width: auto;
+}
+
 /* NAVIGATION */
 
 .back-ctn {

@@ -34,3 +34,13 @@
 .EditForm label {
     margin-bottom: 10px;
 }
+
+.loop-input {
+    border: none;
+    background: white;
+    border-radius: .25rem;
+    margin-bottom: 20px;
+    padding: 10px;
+    margin-top: 20px;
+    width: 100%;
+}

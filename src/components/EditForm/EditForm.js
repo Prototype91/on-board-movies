@@ -32,47 +32,47 @@ const EditForm = (props) => {
                     />
                     {movie.categories !== undefined &&
                         movie.categories.map((category, index) => (
-                            <React.Fragment>
-                                <label id={uniqid()} htmlFor="categories">Catégorie {index + 1} :</label>
+                            <label
+                                key={uniqid()}
+                                htmlFor="categories">Catégorie {index + 1} :
                                 <input
                                     id={uniqid()}
+                                    className='loop-input'
                                     type="text"
                                     name='categories'
                                     defaultValue={category}
                                     placeholder=""
                                     required
-                                    onChange={(e) => props.onUpdateFormData(e, index)} />
-                            </React.Fragment>
+                                    onChange={(e) => props.onUpdateFormData(e, index)} /></label>
                         ))
                     }
                     {movie.similar_movies !== undefined &&
                         movie.similar_movies.map((movie, index) => (
-                            <React.Fragment>
-                                <label id={uniqid()} htmlFor="similar_movies">Film similaire {index + 1} :</label>
+                            <label key={uniqid()} htmlFor="similar_movies">Film similaire {index + 1} :
                                 <input
+                                    className='loop-input'
                                     id={uniqid()}
                                     type="text"
                                     name="similar_movies"
                                     defaultValue={movie.title}
                                     placeholder=""
                                     required
-                                    onChange={(e) => props.onUpdateFormData(e, index)} />
-                            </React.Fragment>
+                                    onChange={(e) => props.onUpdateFormData(e, index)} /></label>
                         ))
                     }
                     {movie.actors !== undefined &&
                         movie.actors.map((actor, index) => (
-                            <React.Fragment>
-                                <label id={uniqid()} htmlFor="actors">Acteur {index + 1} :</label>
+                            <label key={uniqid()} htmlFor="actors">Acteur {index + 1} :
                                 <input
+                                    className='loop-input'
                                     id={uniqid()}
                                     type="text"
                                     name="actors"
                                     defaultValue={actor.name}
                                     placeholder=""
                                     required
-                                    onChange={(e) => props.onUpdateFormData(e, index)} />
-                            </React.Fragment>
+                                    onChange={(e) => props.onUpdateFormData(e, index)} /></label>
+
                         ))
                     }
                     <label htmlFor="description">Description :</label>
