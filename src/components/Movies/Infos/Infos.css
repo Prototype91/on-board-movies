@@ -14,6 +14,7 @@
     min-width: 200px;
     border-radius: 25px;
     margin-top: 20px;
+    box-shadow: 0 8px 16px 3px rgba(0, 0, 0, 0.6);
 }
 
 .Infos input {
@@ -43,4 +44,8 @@
     margin-right: 10px;
     text-decoration: none;
     font-size: 13px;
+}
+
+.back-drop {
+    width: 100%!important;
 }

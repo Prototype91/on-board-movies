@@ -16,7 +16,10 @@ const SearchResult = (props) => {
                         </figcaption>
                     </figure>
                 </div>
-                <p>Sortie : {props.release_date}</p>
+                {props.release_date ?
+                    <p>Sortie : {props.release_date}</p> :
+                    <p>Sortie : Inconnue</p>
+                }
                 <input
                     onClick={() => props.getCurrentMovie(props.id)}
                     type="submit"

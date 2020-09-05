@@ -12,6 +12,7 @@ const EditForm = (props) => {
                 <form onSubmit={(e) => props.pushToFavorites(e, movie, movie.id)} >
                     <label htmlFor="title">Titre :</label>
                     <input
+                        id={uniqid()}
                         type="text"
                         name="title"
                         defaultValue={movie.title}
@@ -22,6 +23,7 @@ const EditForm = (props) => {
                     <label htmlFor="release_date">Date de sortie :</label>
                     <input
                         type="date"
+                        id={uniqid()}
                         name="release_date"
                         defaultValue={movie.release_date}
                         placeholder="Date au format jj-mm-aaaa"
@@ -30,12 +32,12 @@ const EditForm = (props) => {
                     />
                     {movie.categories !== undefined &&
                         movie.categories.map((category, index) => (
-                            <React.Fragment key={uniqid()}>
-                                <label key={uniqid()} htmlFor="categories">Catégorie {index + 1} :</label>
+                            <React.Fragment>
+                                <label id={uniqid()} htmlFor="categories">Catégorie {index + 1} :</label>
                                 <input
-                                    key={uniqid()}
+                                    id={uniqid()}
                                     type="text"
-                                    name={'categories'}
+                                    name='categories'
                                     defaultValue={category}
                                     placeholder=""
                                     required
@@ -45,10 +47,10 @@ const EditForm = (props) => {
                     }
                     {movie.similar_movies !== undefined &&
                         movie.similar_movies.map((movie, index) => (
-                            <React.Fragment key={uniqid()}>
-                                <label key={uniqid()} htmlFor="similar_movies">Film similaire {index + 1} :</label>
+                            <React.Fragment>
+                                <label id={uniqid()} htmlFor="similar_movies">Film similaire {index + 1} :</label>
                                 <input
-                                    key={uniqid()}
+                                    id={uniqid()}
                                     type="text"
                                     name="similar_movies"
                                     defaultValue={movie.title}
@@ -60,10 +62,10 @@ const EditForm = (props) => {
                     }
                     {movie.actors !== undefined &&
                         movie.actors.map((actor, index) => (
-                            <React.Fragment key={uniqid()}>
-                                <label key={uniqid()} htmlFor="actors">Acteur {index + 1} :</label>
+                            <React.Fragment>
+                                <label id={uniqid()} htmlFor="actors">Acteur {index + 1} :</label>
                                 <input
-                                    key={uniqid()}
+                                    id={uniqid()}
                                     type="text"
                                     name="actors"
                                     defaultValue={actor.name}

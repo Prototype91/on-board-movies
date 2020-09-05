@@ -101,7 +101,7 @@ const AddMovie = (props) => {
                     categories: categoriesArray,
                     description: currentMovie.overview,
                     poster: `http://image.tmdb.org/t/p/w185${currentMovie.poster_path}`,
-                    backdrop: `http://image.tmdb.org/t/p/w185${currentMovie.backdrop_path}`,
+                    backdrop: `http://image.tmdb.org/t/p/original${currentMovie.backdrop_path}`,
                     actors: actors,
                     similar_movies: similarMovies,
                 });

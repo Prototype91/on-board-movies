@@ -52,7 +52,8 @@ input:focus {
     border: 1px solid hotpink;
 }
 
-input, a {
+input,
+a {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -79,7 +80,8 @@ input:hover {
     border: none;
 }
 
-.delete-btn, .add-btn {
+.delete-btn,
+.add-btn {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -95,7 +97,6 @@ input:hover {
 .wrapper .cards .card {
     position: relative;
 }
-
 
 .wrapper .cards {
     display: flex;
