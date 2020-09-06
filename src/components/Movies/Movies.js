@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Movie from './Movie/Movie';
 import Filter from './Filter/Filter';
-import { useHistory } from "react-router";
+import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import uniqid from 'uniqid';
 import './Movies.css';
@@ -28,7 +28,7 @@ const Movies = (props) => {
         history.push(`/infos/${id}`);
     }
 
-    // Function to filter your movies
+    // Todo : Function to filter your movies
     const filterMovies = (e) => {
         e.preventDefault();
 
@@ -40,11 +40,11 @@ const Movies = (props) => {
         // Sets the resuls of filter
         if (filterValues.title !== null) {
             titleResult = props.movies.filter(movie => movie.title === filterValues.title)[0];
-            console.log('Result Filter Title', titleResult);
+            // console.log('Result Filter Title', titleResult);
             setFilteredMovies(titleResult);
             if (filterValues.date !== null) {
                 dateResult = props.movies.filter(movie => movie.release_date === filterValues.date)[0];
-                console.log('Result Filter Date', dateResult);
+                // console.log('Result Filter Date', dateResult);
                 setFilteredMovies({ ...filteredMovies, dateResult });
                 // if (filterValues.category !== null) {
                 //     categoryResult = props.movies.filter(movie => movie.categories === filterValues.category)[0];
@@ -67,20 +67,20 @@ const Movies = (props) => {
         // Updates the values of the filter
         data[name] = value;
         setFilterValues(data);
-        console.log(data);
+        // console.log(data);
     }
 
     return (
-        <article className="Movies">
+        <article className='Movies'>
             <Filter
                 filterMovies={filterMovies}
                 updateFilterValues={updateFilterValues}
             />
-            <h1 className="title-movies">Ma Bibliothèque :</h1>
+            <h1 className='title-movies'>Ma Bibliothèque :</h1>
             <div className='back-ctn'>
                 <Link className='back-link' to='/addMovies'>Ajouter un Film</Link>
             </div>
-            {props.movies.length > 0 ? props.movies.reverse().map((movie) => (
+            {props.movies.length > 0 ? props.movies.map((movie) => (
                 <Movie
                     id={movie.id}
                     key={uniqid()}

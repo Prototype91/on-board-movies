@@ -19,7 +19,7 @@ const App = () => {
   useEffect(() => {
     Axios.get(REQUEST_URL)
       .then(movies => {
-        console.log("Mes Films : ", movies.data);
+        console.log('Mes Films : ', movies.data);
         let myMovies = movies.data;
         setMovies(myMovies);
       })
@@ -45,7 +45,7 @@ const App = () => {
   const updateFavoriteMovies = () => {
     Axios.get(REQUEST_URL)
       .then(movies => {
-        console.log("Mes Films : ", movies.data);
+        console.log('Mes Films : ', movies.data);
         let myNewMovies = movies.data;
         setMovies(myNewMovies);
       })
@@ -60,7 +60,7 @@ const App = () => {
         <Route exact path='/'>
           <h1>Bienvenue sur On-Board Movies</h1>
           <Movies
-            movies={movies}
+            movies={movies.reverse()}
             deleteMovie={deleteMovie}
           />
         </Route>

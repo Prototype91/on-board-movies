@@ -33,26 +33,26 @@ const Info = (props) => {
         <React.Fragment key={uniqid()}>
             {movie !== undefined ?
                 <article>
-                    <section className="Infos">
+                    <section className='Infos'>
                         <h1>Voici le détail du film {movie.title}</h1>
                         {movie.backdrop !== 'http://image.tmdb.org/t/p/originalnull' &&
                             <img className='back-drop' src={movie.backdrop} alt='backdrop' />}
                         <div className='back-ctn'>
-                            <Link className='back-link' to="/">Retour</Link>
+                            <Link className='back-link' to='/'>Retour</Link>
                         </div>
-                        {movie.poster === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt="Poster" /> : <img src={movie.poster} alt="Poster" />}
+                        {movie.poster === 'http://image.tmdb.org/t/p/w185null' ? <img src={defaultImage} alt='Poster' /> : <img src={movie.poster} alt='Poster' />}
                         <h1>Titre : {movie.title}</h1>
                         <h2>Date de sortie : {movie.release_date}</h2>
                         <h2>Catégories : {categoriesArray}</h2>
                         <p>Synopsis : {movie.description}</p>
-                        <Link to={`/movie/edit/${movie.id}`} className="edit-btn">Modifier</Link>
-                        <Link to='/' className="delete-btn" onClick={() => props.deleteMovie(movie.id)}>Supprimer</Link>
+                        <Link to={`/movie/edit/${movie.id}`} className='edit-btn'>Modifier</Link>
+                        <Link to='/' className='delete-btn' onClick={() => props.deleteMovie(movie.id)}>Supprimer</Link>
                     </section>
-                    <section className="wrapper">
+                    <section className='wrapper'>
                         {similarMovies.length > 0 && <h2>Films Similaires :</h2>}
-                        <div className="cards">
+                        <div className='cards'>
                             {similarMovies.length > 0 && similarMovies.map((similarMovie, index) => (
-                                <figure key={uniqid()} className="card">
+                                <figure key={uniqid()} className='card'>
                                     {similarMovie.poster === 'http://image.tmdb.org/t/p/w185null' ?
                                         <img src={defaultImage} alt='acteur' /> : <img src={similarMovie.poster} alt='poster' />}
                                     <figcaption>
@@ -62,11 +62,11 @@ const Info = (props) => {
                             ))}
                         </div>
                     </section>
-                    <section className="wrapper">
+                    <section className='wrapper'>
                         {actorsArray.length > 0 && <h2>Acteurs du film :</h2>}
-                        <div className="cards">
+                        <div className='cards'>
                             {actorsArray.length > 0 && actorsArray.map((actor, index) => (
-                                <figure key={uniqid()} className="card">
+                                <figure key={uniqid()} className='card'>
                                     {actor.photo === 'http://image.tmdb.org/t/p/w185null' ?
                                         <img src={defaultImage} alt='acteur' /> : <img src={actor.photo} alt='acteur' />}
                                     <figcaption>

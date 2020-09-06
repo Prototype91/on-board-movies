@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useHistory } from "react-router";
+import { useHistory } from 'react-router';
 import { goToTop } from 'react-scrollable-anchor';
 import EditForm from '../EditForm/EditForm';
 import Axios from 'axios';
@@ -73,7 +73,7 @@ const EditMovie = (props) => {
         <div className='EditMovie'>
             <h1>Modifier le film : </h1>
             <div className='back-ctn'>
-                <Link className='back-link' to="/">Retour</Link>
+                <Link className='back-link' to='/'>Retour</Link>
             </div>
             <EditForm
                 movie={movie}

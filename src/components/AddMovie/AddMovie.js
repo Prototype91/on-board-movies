@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 import { Link } from 'react-router-dom';
-import { useHistory } from "react-router";
+import { useHistory } from 'react-router';
 import { goToTop } from 'react-scrollable-anchor';
 import uniqid from 'uniqid';
 import SearchResult from './SearchResult/SearchResult';
@@ -179,7 +179,7 @@ const AddMovie = (props) => {
 
     return (
         <React.Fragment>
-            <div className="AddMovies">
+            <div className='AddMovies'>
                 {!stepTwo &&
                     <SearchBar
                         startSearch={startSearch}
@@ -187,9 +187,9 @@ const AddMovie = (props) => {
                     />}
                 {!stepTwo &&
                     <div className='back-ctn'>
-                        <Link className='back-link' to="/">Retour</Link>
+                        <Link className='back-link' to='/'>Retour</Link>
                     </div>}
-                <div className="results">
+                <div className='results'>
                     {searchedResults.length > 0 && !stepTwo &&
                         searchedResults.map((movie, index) => (
                             <SearchResult

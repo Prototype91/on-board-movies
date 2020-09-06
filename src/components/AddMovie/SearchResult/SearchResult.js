@@ -4,12 +4,12 @@ import defaultImage from '../../../assets/no-image.png';
 
 const SearchResult = (props) => {
     return (
-        <article className="wrapper">
-            <section className="cards">
-                <figure className="card" onClick={() => props.getCurrentMovie(props.id)}>
+        <article className='wrapper'>
+            <section className='cards'>
+                <figure className='card' onClick={() => props.getCurrentMovie(props.id)}>
                     {props.poster === 'http://image.tmdb.org/t/p/w185null' ?
-                        <img src={defaultImage} alt="Poster" /> :
-                        <img src={props.poster} alt="Poster" />}
+                        <img src={defaultImage} alt='Poster' /> :
+                        <img src={props.poster} alt='Poster' />}
                     <figcaption>
                         <p>{props.title}</p>
                     </figcaption>
@@ -20,9 +20,9 @@ const SearchResult = (props) => {
                 <p>Sortie : Inconnue</p>}
             <input
                 onClick={() => props.getCurrentMovie(props.id)}
-                type="submit"
-                value="Ajouter"
-                className="add-btn"
+                type='submit'
+                value='Ajouter'
+                className='add-btn'
             />
         </article>
     );
