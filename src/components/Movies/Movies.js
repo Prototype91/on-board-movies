@@ -80,19 +80,21 @@ const Movies = (props) => {
             <div className='back-ctn'>
                 <Link className='back-link' to='/addMovies'>Ajouter un Film</Link>
             </div>
-            {props.movies.length > 0 ? props.movies.map((movie) => (
-                <Movie
-                    id={movie.id}
-                    key={uniqid()}
-                    title={movie.title}
-                    release_date={movie.release_date}
-                    description={movie.description}
-                    poster={movie.poster}
-                    viewMovieInfo={viewMovieInfo}
-                    deleteMovie={props.deleteMovie}
-                    editMovie={props.editMovie}
-                />
-            )) : <h1 className='no-movies'>Aucun film dans votre bibliotèque ...</h1>}
+            <div className='wrap-movies'>
+                {props.movies.length > 0 ? props.movies.map((movie) => (
+                    <Movie
+                        id={movie.id}
+                        key={uniqid()}
+                        title={movie.title}
+                        release_date={movie.release_date}
+                        description={movie.description}
+                        poster={movie.poster}
+                        viewMovieInfo={viewMovieInfo}
+                        deleteMovie={props.deleteMovie}
+                        editMovie={props.editMovie}
+                    />
+                )) : <h1 className='no-movies'>Aucun film dans votre bibliotèque ...</h1>}
+            </div>
         </article>
     );
 }

@@ -3,3 +3,9 @@
 .no-movies {
     margin-top: 30px;;
 }
+
+.wrap-movies {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

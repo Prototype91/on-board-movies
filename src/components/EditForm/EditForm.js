@@ -72,7 +72,6 @@ const EditForm = (props) => {
                                     placeholder='Acteur'
                                     required
                                     onChange={(e) => props.onUpdateFormData(e, index)} /></label>
-
                         ))
                     }
                     <label htmlFor='description'>Description :</label>

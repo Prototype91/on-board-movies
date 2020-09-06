@@ -16,7 +16,7 @@ const Movie = (props) => {
                 </div>
                 <p>Titre : {props.title}</p>
                 <p>Sortie : {props.release_date}</p>
-                <p>Synopsis : {props.description.substring(0, 200)}...</p>
+                <p>Synopsis : {props.description.substring(0, 100)}...</p>
                 <Link to={`/movie/edit/${props.id}`} className="edit-btn">Modifier</Link>
                 <input
                     type="submit"

@@ -33,3 +33,13 @@
     font-size: 13px;
     text-decoration: none;
 }
+
+.Movie {
+    width: 30%;
+}
+
+@media(max-width:1024px) {
+    .Movie {
+        width: 100%;
+    }
+}
