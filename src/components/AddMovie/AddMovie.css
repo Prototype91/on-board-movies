@@ -5,3 +5,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
+.AddMovies p {
+    text-align: center;
+}

@@ -20,6 +20,7 @@ const AddMovie = (props) => {
     const [dateParam, setDateParam] = useState('');
     const [stepTwo, setStepTwo] = useState(false);
     const [movieToSend, setMovieToSend] = useState(null);
+    const [searchActive, setSearchActive] = useState(false);
 
     const history = useHistory();
 
@@ -28,6 +29,7 @@ const AddMovie = (props) => {
         e.preventDefault();
         Axios.get(`${BASE_URL}api_key=${API_KEY}&query=${titleParam}&primary_release_year=${dateParam}`)
             .then(movies => {
+                setSearchActive(true);
                 let results = movies.data.results;
                 // Get all the results of the search
                 setSearchedResults(results);
@@ -139,6 +141,7 @@ const AddMovie = (props) => {
 
     // Function to get the search values
     const changeHandler = (e) => {
+        setSearchActive(false);
         switch (e.target.name) {
             case 'title':
                 setTitleParam(e.target.value);
@@ -199,6 +202,10 @@ const AddMovie = (props) => {
                             />
                         ))}
                 </div>
+                <React.Fragment>
+                    {searchActive && searchedResults.length === 0 && !stepTwo &&
+                        <p>Aucun résultat pour "{titleParam}"</p>}
+                </React.Fragment>
                 {movieToSend !== null && stepTwo &&
                     <StepTwoAddMovie
                         movie={movieToSend}

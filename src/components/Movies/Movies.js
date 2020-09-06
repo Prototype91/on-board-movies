@@ -70,7 +70,6 @@ const Movies = (props) => {
         console.log(data);
     }
 
-
     return (
         <article className="Movies">
             <Filter
@@ -81,7 +80,7 @@ const Movies = (props) => {
             <div className='back-ctn'>
                 <Link className='back-link' to='/addMovies'>Ajouter un Film</Link>
             </div>
-            {props.movies.length > 0 ? props.movies.map((movie) => (
+            {props.movies.length > 0 ? props.movies.reverse().map((movie) => (
                 <Movie
                     id={movie.id}
                     key={uniqid()}
