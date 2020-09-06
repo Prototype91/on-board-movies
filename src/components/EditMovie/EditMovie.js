@@ -4,7 +4,6 @@ import { useHistory } from 'react-router';
 import { goToTop } from 'react-scrollable-anchor';
 import EditForm from '../EditForm/EditForm';
 import Axios from 'axios';
-import './EditMovie.css';
 
 const EditMovie = (props) => {
 
