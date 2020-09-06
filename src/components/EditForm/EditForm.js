@@ -33,7 +33,7 @@ const EditForm = (props) => {
                     {movie.categories !== undefined &&
                         movie.categories.map((category, index) => (
                             <label
-                                key={uniqid()}
+                                key={index}
                                 htmlFor='categories'>Catégorie {index + 1} :
                                 <input
                                     id={uniqid()}
@@ -48,7 +48,7 @@ const EditForm = (props) => {
                     }
                     {movie.similar_movies !== undefined &&
                         movie.similar_movies.map((movie, index) => (
-                            <label key={uniqid()} htmlFor='similar_movies'>Film similaire {index + 1} :
+                            <label key={index} htmlFor='similar_movies'>Film similaire {index + 1} :
                                 <input
                                     className='loop-input'
                                     id={uniqid()}
@@ -62,7 +62,7 @@ const EditForm = (props) => {
                     }
                     {movie.actors !== undefined &&
                         movie.actors.map((actor, index) => (
-                            <label key={uniqid()} htmlFor='actors'>Acteur {index + 1} :
+                            <label key={index} htmlFor='actors'>Acteur {index + 1} :
                                 <input
                                     className='loop-input'
                                     id={uniqid()}

@@ -160,7 +160,6 @@ const AddMovie = (props) => {
         // Posting the movie
         Axios.post('http://localhost:3000/movies', movie)
             .then(response => {
-                console.log(response);
                 goToTop();
                 // Updates your favorite movies
                 props.updateFavoriteMovies();

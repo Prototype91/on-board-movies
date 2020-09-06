@@ -30,7 +30,6 @@ const EditMovie = (props) => {
         // This will replace the movie with the new values
         Axios.put(`http://localhost:3000/movies/${idUrl}`, movie)
             .then(response => {
-                console.log(response);
                 goToTop();
                 // Updates you favorite movies
                 props.updateFavoriteMovies();

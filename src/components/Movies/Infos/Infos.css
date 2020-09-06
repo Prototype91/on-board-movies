@@ -46,3 +46,7 @@
 .back-drop {
     width: 100%!important;
 }
+
+.wrapper .similar {
+    margin-top: 20px;
+}

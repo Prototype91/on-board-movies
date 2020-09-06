@@ -19,7 +19,6 @@ const App = () => {
   useEffect(() => {
     Axios.get(REQUEST_URL)
       .then(movies => {
-        console.log('Mes Films : ', movies.data);
         let myMovies = movies.data;
         setMovies(myMovies);
       })
@@ -32,7 +31,6 @@ const App = () => {
   const deleteMovie = (id) => {
     Axios.delete(`http://localhost:3000/movies/${id}`)
       .then(response => {
-        console.log(response);
         // Updates your favorite movies after deletion
         updateFavoriteMovies();
       })
@@ -45,7 +43,6 @@ const App = () => {
   const updateFavoriteMovies = () => {
     Axios.get(REQUEST_URL)
       .then(movies => {
-        console.log('Mes Films : ', movies.data);
         let myNewMovies = movies.data;
         setMovies(myNewMovies);
       })

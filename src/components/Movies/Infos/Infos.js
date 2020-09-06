@@ -49,7 +49,7 @@ const Info = (props) => {
                         <Link to='/' className='delete-btn' onClick={() => props.deleteMovie(movie.id)}>Supprimer</Link>
                     </section>
                     <section className='wrapper'>
-                        {similarMovies.length > 0 && <h2>Films Similaires :</h2>}
+                        {similarMovies.length > 0 && <h2 className='similar'>Films Similaires :</h2>}
                         <div className='cards'>
                             {similarMovies.length > 0 && similarMovies.map((similarMovie, index) => (
                                 <figure key={uniqid()} className='card'>
